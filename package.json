@@ -1,0 +1,19 @@
+{
+  "name": "movies-explorer-frontend",
+  "version": "1.0.0",
+  "description": "movie explorer diplom\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D \u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D frontend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/litvinovsl/movies-explorer-frontend.git"
+  },
+  "author": "Sergey Litvinov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/litvinovsl/movies-explorer-frontend/issues"
+  },
+  "homepage": "https://github.com/litvinovsl/movies-explorer-frontend#readme"
+}
