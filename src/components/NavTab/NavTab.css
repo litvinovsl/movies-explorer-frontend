@@ -1,0 +1,19 @@
+.nav-tab{
+    height: 66px;
+    display: flex;
+
+}
+
+.nav-tab__list{
+    display: flex;
+	list-style: none;
+    margin: 24px auto;
+    gap: 40px;
+    padding: 0;
+}
+
+.nav-tab__link{
+    color: #FFF;
+    font-size: 13px;
+    line-height: 16px;
+}
