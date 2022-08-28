@@ -1,8 +1,6 @@
 function Header() {
     return (
-      <div>
-        привет
-      </div>
+      <></>
     );
 }
 
