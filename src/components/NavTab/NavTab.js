@@ -1,7 +1,7 @@
 import React from 'react';
 import './NavTab.css';
 
-function Promo() {
+function NavTab() {
     return (
         <section className='nav-tab'>
             <ul className='nav-tab__list'>
@@ -13,4 +13,4 @@ function Promo() {
     );
 }
 
-export default Promo;
+export default NavTab;
