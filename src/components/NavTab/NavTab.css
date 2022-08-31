@@ -16,4 +16,9 @@
     color: #FFF;
     font-size: 13px;
     line-height: 16px;
+    transition: opacity .3s ease-in-out;
+    cursor: pointer;
+}
+.nav-tab__link:hover {
+    opacity: .6;
 }
