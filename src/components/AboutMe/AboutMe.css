@@ -1,0 +1,109 @@
+.about-me{
+    padding-top: 110px;
+    padding-bottom: 125px;
+    padding-left: 70px;
+    padding-right: 70px;
+}
+
+.about-me__card{
+    margin-top: 66px;
+    margin-bottom: 101px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.about-me__name{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    margin: 0 0 18px;
+}
+
+.about-me__age{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    margin: 0;
+}
+
+.about-me__text{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    max-width: 600px;
+    margin: 26px 0 99px;
+}
+
+.about-me__github{
+    text-decoration: none;
+    color: #FFF;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    transition: opacity .3s ease-in-out;
+    cursor: pointer;
+}
+.about-me__github:hover {
+    opacity: .6;
+}
+
+.about-me__photo{
+    height: 327px;
+    width: 240px;
+}
+
+.about-me__portfolio{
+    color: #8B8B8B;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    mix-blend-mode: normal;
+    margin-bottom: 50px;
+}
+.about-me__my-projs{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.about-me__my-proj{
+    color: #FFF;
+    text-decoration: none;
+    border-bottom: 1px solid #424242;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: opacity .3s ease-in-out;
+    cursor: pointer;
+}
+
+.about-me__my-proj:hover {
+    opacity: .6;
+}
+
+.about-me__my-proj_no-border{
+    border: none;
+}
+
+.about-me__my-proj-arrow{
+    margin: 0;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 60px;
+    letter-spacing: -0.04em;
+}
+
+.about-me__my-proj-title{
+    margin: 0;
+    margin-bottom: 19px;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: -0.04em;
+}
