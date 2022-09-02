@@ -5,7 +5,7 @@ import SectionTitle from '../SectionTitle/SectionTitle';
 
 function AboutMe() {
     return (
-        <section className='about-me'>
+        <section className='about-me' id='about-me'>
             <SectionTitle>
                 Студент
             </SectionTitle>
