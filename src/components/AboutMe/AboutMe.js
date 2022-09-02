@@ -17,7 +17,7 @@ function AboutMe() {
                     закончил университет гражданской авиации, специализация Организация автоматизированных систем управления гражданской авиации. 
                     Был во многих городах России начиная Санкт-Петербургом и заканчивая Камчаткой. Недавно начал кодить. С 2019 года работаю в 
                     компании ООО «Фирма «Новые информационные технологии в авиации».</p>
-                    <a className='about-me__github' href='https://github.com/litvinovsl'>Github</a>
+                    <a className='about-me__github' href='https://github.com/litvinovsl' rel="noreferrer" target="_blank">Github</a>
                 </div>
                 <img className='about-me__photo' src={aboutMePhoto} alt='фото автора сайта' />
             </div>
