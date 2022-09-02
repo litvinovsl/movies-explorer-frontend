@@ -26,7 +26,12 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 18px;
+    transition: opacity .3s ease-in-out;
 }
+.header__link:hover {
+    opacity: .6;
+}
+
 
 .header__links{
     display: flex;
@@ -45,6 +50,7 @@
     text-decoration: none;
     width: 100px;
     height: 30px;
+    transition: opacity .3s ease-in-out;
 }
 
 .header__profile-text{
@@ -54,9 +60,14 @@
     font-size: 14px;
     line-height: 16px;
 }
+.header__profile:hover {
+    opacity: .6;
+    
+}
 .header__profile-icon{
     width: 11.5px;
     height: 14px;
+    opacity: 1;
 }
 
 .header__profile-icon-border{
