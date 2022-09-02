@@ -18,6 +18,12 @@
     color: #8B8B8B;
 }
 
+.footer__links{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
 .footer__copyright{
     display: flex;
     flex-direction: row;
@@ -28,4 +34,11 @@
 
 .footer__copyright-text{
     margin-top: 20px;
+    color: #FFF;
+    text-decoration: none;
+    transition: opacity .3s ease-in-out;
+}
+
+.footer__copyright-text_hover-opacity:hover {
+    opacity: .6;
 }
