@@ -1,5 +1,6 @@
-import Header from "./Header";
+import Header from "./Header/Header";
 import Main from "./Main/Main";
+import { Route, Redirect, Switch, useHistory } from "react-router-dom";
 
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <div>
       <Header />
       <Main />
+      
     </div>
   );
 }
