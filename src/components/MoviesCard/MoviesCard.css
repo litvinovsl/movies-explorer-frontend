@@ -1,0 +1,77 @@
+.element{
+    overflow:hidden;
+    display: grid;
+    grid-template-columns: 1fr 60px;
+    grid-template-rows: 1fr;
+    position: relative;
+}
+@media screen and (max-width: 600px) {
+    .element {
+        min-height: 361px;
+    }
+}
+
+.element__name{
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 190px;
+    margin: 0;
+    margin-top: 14px;
+}
+
+
+.element__like-counter{
+    align-self: center;
+    justify-self: center;
+    color: #8B8B8B;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 10px;
+    margin: 0;
+    
+}
+.element__time-background{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 18px;
+    background-color: #2F2F2F;
+    margin-top: 14px;
+    border-radius: 3px;
+}
+
+.element__image{
+    border-radius: 6px;
+    width: 360px;
+    height: 201px;
+    object-fit: cover;
+    grid-column: 1/3;
+    cursor: pointer;
+}
+
+.element__delete{
+    background-image: url(../../images/icon-search.svg);
+    width: 18px;
+    height: 19px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+.element__delete:hover {
+    opacity: .5;
+}
+
+.element__delete_none{
+    display: none;
+}
