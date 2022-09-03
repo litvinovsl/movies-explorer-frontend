@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './SearchForm.css';
+import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import searchIcon from '../../images/icon-search.svg';
 import submitIcon from '../../images/search-submit-button.svg';
 
@@ -14,7 +15,7 @@ function SearchForm() {
                         <input className='search-form__input' type='text' id='movie-input' placeholder='Фильм' />
                         <button className='search-form__submit' type='submit'><img src={submitIcon} alt='' /></button>
                     </div>
-                    {/* <input type='checkbox' className='filter__checkbox' name='filterCheckbox'/> */}
+                    <FilterCheckbox />
                 </form>
             </Route>
         </Switch>
