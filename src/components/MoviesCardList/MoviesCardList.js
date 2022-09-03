@@ -6,7 +6,6 @@ import foto from '../../images/film.svg';
 function MoviesCardList() {
     const name = 'Соберись перед прыжком';
     const time = '1ч 17м';
-    const key = '122d'
     return (
         <section className="elements">
             <MoviesCard 
