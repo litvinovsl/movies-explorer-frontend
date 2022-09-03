@@ -14,7 +14,7 @@ function Header() {
       </Link>
       <div className='header__links-and-button'>
         <nav className='header__links'>
-          <Link to="/films" className='header__link'>Фильмы</Link>
+          <Link to="/movies" className='header__link'>Фильмы</Link>
           <Link to="/films/me" className='header__link'>Сохраненные фильмы</Link>
         </nav>
         <Link to="/profile" className='header__profile'>
