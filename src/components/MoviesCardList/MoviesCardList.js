@@ -54,31 +54,6 @@ function MoviesCardList() {
                 name={name}
                 link={foto}
             />
-            <MoviesCard 
-                time={time}
-                name={name}
-                link={foto}
-            />
-            <MoviesCard 
-                time={time}
-                name={name}
-                link={foto}
-            />
-            <MoviesCard 
-                time={time}
-                name={name}
-                link={foto}
-            />
-            <MoviesCard 
-                time={time}
-                name={name}
-                link={foto}
-            />
-            <MoviesCard 
-                time={time}
-                name={name}
-                link={foto}
-            />
         </section>
     )
 };
