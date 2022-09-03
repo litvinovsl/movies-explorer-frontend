@@ -17,6 +17,7 @@
     display: inline-flex;
     align-items: center;
     user-select: none;
+    cursor: pointer;
   }
 .filter__checkbox+label::before {
     content: '';
