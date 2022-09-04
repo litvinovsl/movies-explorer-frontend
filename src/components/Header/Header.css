@@ -79,4 +79,32 @@
     background-color: #313131;
     border-radius: 4px;
     margin-left: 17px;
-};
+}
+
+.header__burger{
+    display: none;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    background-image: url(../../images/header-burger.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    transition: opacity .3s ease-in-out;
+}
+.header__burger:hover {
+    opacity: .6;
+}
+
+@media screen and (max-width: 768px) {
+    .header{
+        padding: 0 30px;
+    }
+	.header__links-and-button {
+		display: none;
+	}
+    .header__burger{
+        display: block;
+    }
+}
