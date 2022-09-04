@@ -2,13 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './MenuPopup.css';
 import iconProfile from '../../images/icon_profile.svg';
-import logo from '../../images/logo.svg';
-
-
 
 function MenuPopup(props) {
 
-  
   return (
     <section className={`popup ${props.isOpen && "popup_opened"}`}>
       <div className="popup__container">
