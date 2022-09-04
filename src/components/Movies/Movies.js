@@ -13,7 +13,6 @@ function Movies() {
             {/* <Preloader /> */}
             <MoviesCardList />
             <MoreMovies />
-
         </main>
     );
 }
