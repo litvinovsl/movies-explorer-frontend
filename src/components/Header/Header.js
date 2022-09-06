@@ -29,7 +29,7 @@ function Header() {
       <div className='header__links-and-button'>
         <nav className='header__links'>
           <Link to="/movies" className='header__link'>Фильмы</Link>
-          <Link to="/films/me" className='header__link'>Сохраненные фильмы</Link>
+          <Link to="/saved-movies" className='header__link'>Сохраненные фильмы</Link>
         </nav>
         <Link to="/profile" className='header__profile'>
           <p className='header__profile-text'>Аккаунт</p>
