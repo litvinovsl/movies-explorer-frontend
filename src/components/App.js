@@ -9,22 +9,44 @@ import { Route, Switch } from "react-router-dom";
 function App() {
   return (
     <div>
-      <Header />
       <Switch>
-        <Route exact path="/">
-          <Main />
+        <Route path="/sign-in">
+          Регистрация
         </Route>
-        <Route  path="/movies">
-          <Movies />
+        <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
+
+          <Header />
+
+          <Switch>
+
+            <Route exact path="/">
+              <Main />
+            </Route>
+
+            <Route path="/movies">
+              <Movies />
+            </Route>
+
+            <Route path="/saved-movies">
+              <Movies />
+            </Route>
+
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
+
+          <Route exact path={['/', '/movies', '/saved-movies']}>
+            <Footer />
+          </Route>
         </Route>
-        <Route  path="/saved-movies">
-          <Movies />
-        </Route>
-        <Route  path="/profile">
-          <Profile />
-        </Route>
+        <Route path='*'>
+						404 Page
+				</Route>
       </Switch>
-      <Footer />
+
+
+
     </div>
   );
 }

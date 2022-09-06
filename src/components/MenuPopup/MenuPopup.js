@@ -17,7 +17,7 @@ function MenuPopup(props) {
         </nav>
         </div>
         <div>
-        <Link to="/profile" className='popup__profile'>
+        <Link to="/profile" className='popup__profile' onClick={props.onClose}>
           <p className='popup__profile-text'>Аккаунт</p>
           <div className='popup__profile-icon-border'>
             <img className='popup__profile-icon' src={iconProfile} alt='иконка профиля' />

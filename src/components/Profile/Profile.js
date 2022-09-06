@@ -6,9 +6,17 @@ import './Profile.css';
 
 function Profile() {
     const user = {
-        name: 'Сергей',
-        email: 'admin@admin.ru'
+        name: 'Имя',
+        email: '******@*****.***'
     };
+    const [name, setName] = React.useState(user.name);
+    function handleChangeName(e) {
+        setName(e.target.value);
+      }
+    const [email, setEmail] = React.useState(user.email);
+    function handleChangeEmail(e) {
+        setEmail(e.target.value);
+      }
 
     return (
         <section className="profile">
@@ -19,7 +27,9 @@ function Profile() {
                         className='profile__input'  
                         name="name" 
                         type='text' 
-                        id='profile__name' 
+                        id='profile__name'
+                        value={name || ''}
+                        onChange={handleChangeName}  
                         required 
                         minLength={2} 
                         maxLength={40} />
@@ -29,7 +39,8 @@ function Profile() {
                         name="email" 
                         type='text' 
                         id='profile__email' 
-                        // value={user.email || ""} 
+                        value={email || ''}
+                        onChange={handleChangeEmail} 
                         required 
                         minLength={2} 
                         maxLength={40} />
