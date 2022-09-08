@@ -1,5 +1,5 @@
-import Login from "./Login/Login";
 import Register from "./Register/Register";
+import Login from "./Login/Login";
 import Header from "./Header/Header";
 import Main from "./Main/Main";
 import Movies from "./Movies/Movies";
@@ -12,12 +12,13 @@ function App() {
   return (
     <div>
       <Switch>
+      <Route path="/signup">
+          <Register />
+        </Route>
         <Route path="/signin">
           <Login />
         </Route>
-        <Route path="/signup">
-          <Register />
-        </Route>
+        
         <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
 
           <Header />

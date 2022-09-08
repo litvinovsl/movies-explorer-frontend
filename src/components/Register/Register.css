@@ -40,7 +40,6 @@
 }
 
 .register__submit{
-    margin-top: 49px;
     height: 45px;
     color: #FFF;
     border: none;
@@ -49,6 +48,16 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
+    transition: opacity .3s ease-in-out;
+    cursor: pointer;
+}
+
+.register__submit:hover {
+    opacity: .6;
+}
+
+.register__submit_reg{
+    margin-top: 49px;
 }
 
 .register__link{
@@ -56,6 +65,11 @@
     text-decoration: none;
     margin: 0;
     margin-left: 6px;
+    transition: opacity .3s ease-in-out;
+}
+
+.register__link:hover {
+    opacity: .6;
 }
 
 .register__signin{
