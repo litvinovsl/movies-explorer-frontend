@@ -6,6 +6,7 @@ import Movies from "./Movies/Movies";
 import Profile from "./Profile/Profile";
 import Footer from "./Footer/Footer";
 import { Route, Switch } from "react-router-dom";
+import NotFound from "./NotFound/NotFound";
 
 
 function App() {
@@ -47,7 +48,7 @@ function App() {
           </Route>
         </Route>
         <Route path='*'>
-						404 Page
+						<NotFound />
 				</Route>
       </Switch>
 
