@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import './Header.css';
 import iconProfile from '../../images/icon_profile.svg';
 import logo from '../../images/logo.svg';
-import MenuPopup from '../MenuPopup/MenuPopup'
+import ProfileButton from '../ProfileButton/ProfileButton';
+import MenuPopup from '../MenuPopup/MenuPopup';
 
 
 
@@ -31,12 +32,7 @@ function Header() {
           <Link to="/movies" className='header__link'>Фильмы</Link>
           <Link to="/saved-movies" className='header__link'>Сохраненные фильмы</Link>
         </nav>
-        <Link to="/profile" className='header__profile'>
-          <p className='header__profile-text'>Аккаунт</p>
-          <div className='header__profile-icon-border'>
-            <img className='header__profile-icon' src={iconProfile} alt='иконка профиля' />
-          </div>
-        </Link>
+        <ProfileButton />
       </div>
 
     </section>
