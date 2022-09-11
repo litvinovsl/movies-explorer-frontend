@@ -129,7 +129,7 @@
         font-size: 12px;
         line-height: 18px;
         margin: 20px 0 87px;
-        maxwidth: 364px;
+        max-width: 364px;
     }
     .about-me__photo{
         height: 307px;
