@@ -30,6 +30,9 @@
     align-items: center;
     gap: 20px;
 }
+.header__links_main{
+    gap: 30px;
+}
 
 .header__login{
     border: none;

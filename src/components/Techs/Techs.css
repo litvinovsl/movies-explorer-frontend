@@ -11,7 +11,7 @@
     font-weight: 400;
     font-size: 50px;
     line-height: 58px;
-    letter-spacing: -0.04em;
+    letter-spacing: 0.02em;
 }
 
 .techs__text{
@@ -22,13 +22,14 @@
     line-height: 20px;
     letter-spacing: -0.04em;
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 83px;
 }
 
 .techs__list{
     list-style: none;
     display: flex;
     gap: 10px;
+    padding: 0;
 }
 
 .techs__list-item{
@@ -41,9 +42,9 @@
     font-size: 14px;
     line-height: 17px;
     letter-spacing: -0.04em;
-    border-style: solid;
+    border: none;
     border-radius: 10px;
-    border-color: #303030;
+    background-color: #303030;
     border-width: 2px;
 
 }

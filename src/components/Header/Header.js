@@ -30,7 +30,7 @@ function Header(props) {
       <button className='header__burger' onClick={handleClickBurgerMenu} />
       <div className='header__links-and-button'>
         <Route exact path='/'>
-          <nav className='header__links'>
+          <nav className='header__links header__links_main'>
             <MenuLink
               text='Регистрация'
               route='/signup'

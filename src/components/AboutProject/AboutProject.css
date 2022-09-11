@@ -4,7 +4,7 @@
 
 .about-project__columns {
 	padding: 70px 0 0;
-	margin: 0 0 110px;
+	margin: 0 0 95px;
 	list-style: none;
 	display: flex;
 	flex-flow: row wrap;
@@ -74,7 +74,7 @@
 
 .about-project__period-column-text {
 	margin: 0;
-	padding: 14px 0 0;
+	padding: 0px 0 0;
 	color: #8B8B8B;
 	font-weight: 500;
 	font-size: 14px;

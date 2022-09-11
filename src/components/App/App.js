@@ -19,12 +19,13 @@ function App() {
         <Route path="/signin">
           <Login />
         </Route>
-        <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
-          <Route exact path="/">
-            <Header
-              class='header_main' />
-            <Main />
-          </Route>
+        <Route exact path="/">
+          <Header
+            class='header_main' />
+          <Main />
+          <Footer />
+        </Route>
+        <Route exact path={['/movies', '/saved-movies', '/profile']}>
           <Header />
           <Switch>
             <Route path="/movies">
