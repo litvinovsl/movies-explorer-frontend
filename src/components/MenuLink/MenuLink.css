@@ -12,6 +12,13 @@
     font-size: 18px;
     line-height: 22px;
 }
+
+.nav-link_register{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
+
 .nav-link:hover {
     opacity: .6;
 }

@@ -13,22 +13,26 @@ function App() {
   return (
     <div>
       <Switch>
-      <Route path="/signup">
+        <Route path="/signup">
           <Register />
         </Route>
         <Route path="/signin">
           <Login />
         </Route>
-        
-        <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
 
+        <Route exact path={['/', '/movies', '/saved-movies', '/profile']}>
+          <Route exact path="/">
+            <Header
+            class='header_main' />
+            <Main />
+          </Route>
           <Header />
 
           <Switch>
 
-            <Route exact path="/">
+            {/* <Route exact path="/">
               <Main />
-            </Route>
+            </Route> */}
 
             <Route path="/movies">
               <Movies />
@@ -48,8 +52,8 @@ function App() {
           </Route>
         </Route>
         <Route path='*'>
-						<NotFound />
-				</Route>
+          <NotFound />
+        </Route>
       </Switch>
 
 
