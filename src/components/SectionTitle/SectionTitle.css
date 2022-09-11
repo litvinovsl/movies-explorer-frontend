@@ -13,12 +13,12 @@
 	margin: 0 0 23px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
 	.section-title__title {
 		max-width: 78%;
 	}
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 350px) {
 	.section-title__title {
 		max-width: 88%;
 		font-size: 18px;

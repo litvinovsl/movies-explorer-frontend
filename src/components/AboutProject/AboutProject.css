@@ -100,3 +100,39 @@
 		width: 21%;
 	}
 }
+
+@media screen and (max-width: 450px) {
+    .about-project {
+		padding: 70px 18px;
+	}
+	.about-project__columns {
+		padding-top: 60px;
+		margin-bottom: 49px;
+		flex-direction: column;
+		gap: 58px;
+	}
+	.about-project__column{
+		width: 100%;
+	}
+	.about-project__column-title {
+		margin-bottom: 15px;
+		font-size: 18px;
+		line-height: 22px;
+	}
+	.about-project__column-text {
+		font-size: 11px;
+		line-height: 16px;
+	}
+	.about-project__period-title{
+		padding: 11px 0;
+		font-size: 11px;
+		line-height: 13px;
+	}
+	.about-project__period-column-text{
+		font-size: 11px;
+		line-height: 13px;
+	}
+	.about-project__period-column_type_small{
+		width: 35%;
+	}
+}

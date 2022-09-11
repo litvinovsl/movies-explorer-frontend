@@ -22,3 +22,16 @@
 .nav-tab__link:hover {
     opacity: .6;
 }
+
+@media screen and (max-width: 800px) {
+    .nav-tab{
+    }
+    .nav-tab__list{
+        gap: 24px;
+        margin-top: 22px;
+    }
+    .nav-tab__link{
+        font-size: 11px;
+        line-height: 16px;
+    }
+}

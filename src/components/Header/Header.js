@@ -27,7 +27,9 @@ function Header(props) {
       <Link to="/" >
         <img className='header__logo' src={logo} alt='логотип сайта' />
       </Link>
+      {/* <Route exact path={['/movies', '/saved-movies', '/profile']}> */}
       <button className='header__burger' onClick={handleClickBurgerMenu} />
+      {/* </Route> */}
       <div className='header__links-and-button'>
         <Route exact path='/'>
           <nav className='header__links header__links_main'>
