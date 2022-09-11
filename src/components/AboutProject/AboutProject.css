@@ -81,3 +81,22 @@
 	line-height: 17px;
 	text-align: center;
 }
+
+@media screen and (max-width: 800px) {
+    .about-project {
+		padding: 90px 50px;
+	}
+	.about-project__columns {
+		margin-bottom: 79px;
+	}
+	.about-project__column-title {
+		margin-bottom: 22px;
+	}
+	.about-project__column-text {
+		font-size: 12px;
+		line-height: 18px;
+	}
+	.about-project__period-column_type_small{
+		width: 21%;
+	}
+}

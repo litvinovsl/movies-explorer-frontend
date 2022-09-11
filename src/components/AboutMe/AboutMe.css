@@ -109,3 +109,37 @@
     line-height: 50px;
     letter-spacing: -0.04em;
 }
+
+@media screen and (max-width: 800px) {
+    .about-me{
+        padding:75px 50px;
+        padding-bottom: 70px;
+    }
+    .about-me__name{
+        font-size: 40px;
+        line-height: 40px;
+        margin: 0 0 14px;
+    }
+    .about-me__age{
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    .about-me__text{
+        font-size: 12px;
+        line-height: 18px;
+        margin: 20px 0 87px;
+        width: 364px;
+    }
+    .about-me__photo{
+        height: 307px;
+        width: 255px;
+    }
+    .about-me__card{
+        margin-bottom: 91px;
+    }
+    .about-me__my-proj-title{
+        font-size: 28px;
+        line-height: 50px;
+    }
+}
