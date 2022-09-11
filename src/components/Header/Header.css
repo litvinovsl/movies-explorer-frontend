@@ -79,7 +79,18 @@
     }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 770px) {
+    .header{
+        padding: 0 30px;
+    }
+	.header__links-and-button {
+		display: none;
+	}
+    .header__burger{
+        display: block;
+    }
+}
+@media screen and (max-width: 400px) {
     .header{
         padding: 0 14px;
     }
