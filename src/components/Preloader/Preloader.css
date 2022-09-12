@@ -86,3 +86,9 @@
     background: #FF6838;
     animation: preloader-inside-red 1s ease-in-out infinite;
 }
+
+@media screen and (max-width: 400px) {
+    .preloader{
+        padding: 0;
+    }
+}
