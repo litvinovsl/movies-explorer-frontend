@@ -10,7 +10,7 @@ function Movies() {
     return (
         <main className='movies'>
             <SearchForm />
-            {/* <Preloader /> */}
+            <Preloader />
             <MoviesCardList />
             <MoreMovies />
         </main>
