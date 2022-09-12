@@ -20,9 +20,11 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 400px) {
     .elements {
-        /* grid-template-columns: repeat(1, minmax(282px,282px)); */
+        margin-top: 41px;
+        grid-template-columns: repeat(auto-fill, minmax(300px,300px));
+        grid-gap: 37px 29px;
     }
 }
 

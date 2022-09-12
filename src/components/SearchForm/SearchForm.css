@@ -45,3 +45,20 @@
         padding-top: 85px;
     }
 }
+
+@media screen and (max-width: 400px) {
+    .search-form{
+        padding-top: 92px;
+    }
+    .search-form__serch-icon{
+        display: none;
+    }
+    .search-form__input{
+        text-align: start;
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .search-form__conteiner{
+        padding-bottom: 10px;
+    }
+}

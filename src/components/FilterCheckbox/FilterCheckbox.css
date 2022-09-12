@@ -42,3 +42,13 @@
     text-align: center;
     margin-top: 3px;
 }
+
+@media screen and (max-width: 400px) {
+    .filter{
+        padding-top: 39px;
+    }
+    .filter__span{
+        font-size: 11px;
+        line-height: 18px;
+    }
+}
