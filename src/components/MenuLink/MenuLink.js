@@ -5,7 +5,7 @@ import './MenuLink.css';
 function MenuLink(props) {
 
   return (
-    <Link to={props.route} className={`nav-link ${props.class}`}>{props.text}</Link>
+    <Link  to={props.route} className={`nav-link ${props.class}`} onClick={props.onClose}>{props.text}</Link>
   );
 }
 

@@ -28,17 +28,21 @@ function MenuPopup(props) {
             <MenuLink
               text='Главная страница'
               route='/'
-              class='nav-link_burger' />
+              class='nav-link_burger'
+              onClose={props.onClose} />
             <MenuLink
               text='Фильмы'
               route='/movies'
-              class='nav-link_burger' />
+              class='nav-link_burger'
+              onClose={props.onClose} />
             <MenuLink
               text='Сохраненные фильмы'
               route='/saved-movies'
-              class='nav-link_burger' />
+              class='nav-link_burger'
+              onClose={props.onClose} />
           </nav>
-          <ProfileButton />
+          <ProfileButton
+            onClose={props.onClose} />
         </Route>
       </div>
       <div id="overlayProfile" onClick={props.onClose} className="popup__overlay"></div>
