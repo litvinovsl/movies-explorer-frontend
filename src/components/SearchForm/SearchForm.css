@@ -39,3 +39,9 @@
 .search-form__submit:hover {
     opacity: .6;
 }
+
+@media screen and (max-width: 800px) {
+    .search-form{
+        padding-top: 85px;
+    }
+}

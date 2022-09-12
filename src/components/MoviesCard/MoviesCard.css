@@ -121,6 +121,24 @@
         height: 190px;
     }
     .element {
-        width: 100%;
+        /* width: 100%; */
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .element__image {
+        max-width: 339px;
+        height: 190px;
+    }
+    .element {
+        width: 339px;
+        grid-template-columns: 1fr 54px;
+    }
+    .element__name{
+        margin-top: 25px;
+        margin-left: 0;
+    }
+    .element__time-background{
+        margin-top: 25px;
     }
 }

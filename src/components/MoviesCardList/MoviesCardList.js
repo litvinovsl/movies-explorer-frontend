@@ -52,11 +52,6 @@ function MoviesCardList() {
                         name={name}
                         link={foto}
                     />
-                    <MoviesCard
-                        time={time}
-                        name={name}
-                        link={foto}
-                    />
                 </Route>
                 <Route path="/saved-movies">
                     <MoviesCard
