@@ -1,7 +1,3 @@
 @import url(../vendors/normalize.css);
-@import url(../vendors/InterWeb/inter.css);
+@import url(../vendors/fonts/inter.css);
 @import url(../blocks/page/page.css);
-
-.hi {
-    font-size: 300px;
-}
