@@ -115,17 +115,7 @@
     display: none;
 }
 
-@media screen and (max-width: 1100px) {
-    .element__image {
-        max-width: 339px;
-        height: 190px;
-    }
-    .element {
-        /* width: 100%; */
-    }
-}
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 910px) {
     .element__image {
         max-width: 339px;
         height: 190px;
