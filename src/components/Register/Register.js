@@ -6,19 +6,47 @@ import logo from '../../images/logo.svg';
 
 
 
-function Register() {
+function Register({ onRegister }) {
+
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [name, setName] = React.useState('');
+
+    function handleEmailChange(evt) {
+        setEmail(evt.target.value);
+        console.log('email: ', email);
+    }
+
+    function handlePasswordChange(evt) {
+        setPassword(evt.target.value);
+        console.log('pass: ', password);
+    }
+
+    function handleNameChange(evt) {
+        setName(evt.target.value);
+        console.log('name: ', name);
+    }
+
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        console.log("email: ", email, "pass:", password)
+        onRegister(email, password, name);
+    }
+
     return (
         <section className="register">
             <Link to='/'>
                 <img className='register__icon' src={logo} alt='логотип сайта' />
             </Link>
             <h2 className='register__title'>Добро пожаловать!</h2>
-            <form className='register__form' name='register-form'>
+            <form className='register__form' name='register-form' onSubmit={handleSubmit}>
                 <label htmlFor="register__name" className="register__label">Имя</label>
                 <input
                     className='register__input'
                     name="name"
                     type='text'
+                    onChange={handleNameChange}
                     id='register__name'
                     required
                     minLength={2}
@@ -29,6 +57,7 @@ function Register() {
                     className='register__input'
                     name="email"
                     type='text'
+                    onChange={handleEmailChange}
                     id='register__email'
                     required
                     minLength={2}
@@ -39,6 +68,7 @@ function Register() {
                     className='register__input'
                     name="password"
                     type='password'
+                    onChange={handlePasswordChange}
                     id='register__password'
                     required
                     minLength={2}

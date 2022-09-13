@@ -5,16 +5,34 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
+
+import {register} from "../../utils/auth"
 
 
 function App() {
+
+  const history = useHistory();
+  
+  function onRegister(email, password, name) {
+    register(password, email, name)
+      .then((res) => {
+        if(res) {
+          history.push('/signin');
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
     <div>
       <Switch>
         <Route path="/signup">
-          <Register />
+          <Register
+            onRegister={onRegister} />
         </Route>
         <Route path="/signin">
           <Login />
