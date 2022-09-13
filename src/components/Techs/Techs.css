@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #272727;
 }
 
 .techs__title{
@@ -47,6 +48,7 @@
     background-color: #303030;
     border-width: 2px;
 }
+
 
 @media screen and (max-width: 800px) {
     .techs{
@@ -95,6 +97,9 @@
 }
 
 @media screen and (max-width: 350px) {
+    .techs{
+        background-color: #202020;
+    }
     .techs__list{
         width: 180px;
         flex-direction: row;
@@ -105,4 +110,7 @@
     .techs__list-item{
         margin: 0;
     }
+    .section-title_border-black{
+		border-color: #000;
+	}
 }

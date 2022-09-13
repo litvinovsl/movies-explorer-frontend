@@ -25,4 +25,7 @@
 		line-height: 22px;
 		margin-bottom: 28px;
 	}
+	.section-title_border-black{
+		border-color: #000;
+	}
 }

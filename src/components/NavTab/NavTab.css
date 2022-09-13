@@ -1,7 +1,7 @@
 .nav-tab{
     height: 66px;
     display: flex;
-
+    background-color: #272727;
 }
 
 .nav-tab__list{
