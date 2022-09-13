@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
@@ -5,20 +6,22 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import NotFound from "../NotFound/NotFound";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
-import {register} from "../../utils/auth"
+import { register } from "../../utils/auth"
 
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const history = useHistory();
-  
+
   function onRegister(email, password, name) {
     register(password, email, name)
       .then((res) => {
-        if(res) {
+        if (res) {
           history.push('/signin');
         }
       })
@@ -46,15 +49,21 @@ function App() {
         <Route exact path={['/movies', '/saved-movies', '/profile']}>
           <Header />
           <Switch>
-            <Route path="/movies">
-              <Movies />
-            </Route>
-            <Route path="/saved-movies">
-              <Movies />
-            </Route>
-            <Route path="/profile">
-              <Profile />
-            </Route>
+            <ProtectedRoute
+              component={Movies}
+              loggedIn={loggedIn}
+              exact
+              path='/movies' />
+            <ProtectedRoute
+              component={Movies}
+              loggedIn={loggedIn}
+              exact
+              path='/saved-movies' />
+            <ProtectedRoute
+              component={Profile}
+              loggedIn={loggedIn}
+              exact
+              path='/profile' />
           </Switch>
           <Route exact path={['/', '/movies', '/saved-movies']}>
             <Footer />
