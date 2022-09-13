@@ -6,6 +6,10 @@
     background-color: #202020;
 }
 
+.about-me__text-conteiner{
+    padding-right: 20px;
+}
+
 .about-me__card{
     margin-top: 66px;
     margin-bottom: 101px;

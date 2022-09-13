@@ -10,7 +10,7 @@ function AboutMe() {
                 Студент
             </SectionTitle>
             <div className='about-me__card'>
-                <div>
+                <div className='about-me__text-conteiner'>
                     <h2 className='about-me__name'>Сергей</h2>
                     <h3 className='about-me__age'>Фронтенд-разработчик, 25 лет</h3>
                     <p className='about-me__text'>Я родился в Ставропольском крае, живу в городе Санкт-Петербург, 
