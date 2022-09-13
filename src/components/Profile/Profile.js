@@ -4,7 +4,7 @@ import './Profile.css';
 
 
 
-function Profile() {
+function Profile({logoutProfile}) {
     const user = {
         name: 'Имя',
         email: '******@*****.***'
@@ -48,7 +48,7 @@ function Profile() {
                 </div>
                 <button className='profile__button profile__button_submit' type='submit'>Редактировать</button>
             </form>
-            <button className='profile__button profile__button_exit-profile' type='button'>Выйти из профиля</button>
+            <button className='profile__button profile__button_exit-profile' type='button' onClick={logoutProfile}>Выйти из профиля</button>
         </section>
     );
 }

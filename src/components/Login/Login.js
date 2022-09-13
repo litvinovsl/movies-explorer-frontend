@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 import logo from '../../images/logo.svg';
@@ -6,19 +6,37 @@ import logo from '../../images/logo.svg';
 
 
 
-function Login() {
+function Login({onLogin}) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    function handleEmailChange(evt){
+        setEmail(evt.target.value)
+    }
+
+    function handlePasswordChange(evt){
+        setPassword(evt.target.value)
+    }
+
+    function handleSubmit(evt){
+        evt.preventDefault();
+        onLogin(email, password);
+    }
+
+
     return (
         <section className="register">
             <Link to='/'>
                 <img className='register__icon' src={logo} alt='логотип сайта' />
             </Link>
             <h2 className='register__title'>Рады видеть!</h2>
-            <form className='register__form' name='login-form'>
+            <form className='register__form' name='login-form' onSubmit={handleSubmit}>
                 <label htmlFor="register__email" className="register__label">E-mail</label>
                 <input
                     className='register__input'
                     name="email"
                     type='text'
+                    onChange={handleEmailChange}
                     id='login__email'
                     required
                     minLength={2}
@@ -29,6 +47,7 @@ function Login() {
                     className='register__input'
                     name="password"
                     type='password'
+                    onChange={handlePasswordChange}
                     id='login__password'
                     required
                     minLength={2}
