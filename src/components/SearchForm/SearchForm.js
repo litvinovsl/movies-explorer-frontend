@@ -12,7 +12,7 @@ function SearchForm() {
                 <form className='search-form' name='movies-search-form' noValidate>
                     <div className='search-form__conteiner'>
                         <img className='search-form__serch-icon' src={searchIcon} alt='' />
-                        <input className='search-form__input' type='text' id='movie-input' placeholder='Фильм' />
+                        <input className='search-form__input' type='text' id='movie-input' placeholder='Фильм' required/>
                         <button className='search-form__submit' type='submit'><img src={submitIcon} alt='' /></button>
                     </div>
                     <FilterCheckbox />
@@ -22,7 +22,7 @@ function SearchForm() {
                 <form className='search-form' name='saved-movies-search-form' noValidate>
                     <div className='search-form__conteiner'>
                         <img className='search-form__serch-icon' src={searchIcon} alt='' />
-                        <input className='search-form__input' type='text' id='movie-input' placeholder='Фильм' />
+                        <input className='search-form__input' type='text' id='movie-input' placeholder='Фильм' required/>
                         <button className='search-form__submit' type='submit'><img src={submitIcon} alt='' /></button>
                     </div>
                     <FilterCheckbox />
