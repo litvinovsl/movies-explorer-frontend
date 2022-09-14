@@ -1,7 +1,7 @@
 import React from 'react'
 import './MoviesCard.css'
 
-function MoviesCard(props) {
+function MoviesCard({ movie }) {
     const [isSaved, setIsSaved] = React.useState(false);
     function click() {
         console.log('click');
@@ -20,12 +20,12 @@ function MoviesCard(props) {
             <button className={movieSaveButtonClassName} onClick={click}></button>
             <img
                 className="element__image"
-                src={props.link}
-                alt={props.name}
+                src={movie.image}
+                alt={movie.nameRU}
             />
-            <p className="element__name">{props.name}</p>
+            <p className="element__name">{movie.nameRU}</p>
             <div className='element__time-background'>
-                <p className="element__like-counter">1ч 17м</p>
+                <p className="element__like-counter">{movie.duration}</p>
             </div>
         </div>
 

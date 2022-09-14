@@ -8,6 +8,7 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import { Route, Switch, useHistory } from "react-router-dom";
 import api from "../../utils/Api";
+// import apiMovies from "../../utils/MoviesApi";
 import NotFound from "../NotFound/NotFound";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
@@ -29,6 +30,15 @@ function App() {
   useEffect(() => {
     checkToken();
   });
+
+  // useEffect(() => {
+  //   if(loggedIn){
+  //     apiMovies.getMovies()
+  //       .then((movies) => {
+  //         console.log(movies)
+  //       });
+  //   }
+  // }, [loggedIn]);
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
@@ -105,8 +115,43 @@ function App() {
       });
   }
 
+  //====================--movies--=================//
+
+  const [initialMovies, setInitialMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
+	const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
+	const [moviesInputValue, setMoviesInputValue] = useState('');
+	const [savedMoviesInputValue, setSavedMoviesInputValue] = useState('');
+	const [shortFilmsCheckboxValue, setShortFilmsCheckboxValue] = useState(false);
+	const [savedMovies, setSavedMovies] = useState([]);
+  const [isFirstSearchHappened, setIsFirstSearchHappened] = useState(false);
+  const [renderedMovies, setRenderedMovies] = useState([]);
+
+  //===============================================//
+
   return (
-    <CurrentUserContext.Provider value={currentUser}>
+    <CurrentUserContext.Provider 
+      value={{
+        currentUser,
+        initialMovies,
+        setInitialMovies,
+        movies,
+        setMovies,
+        filteredSavedMovies,
+        setFilteredSavedMovies,
+        moviesInputValue,
+        setMoviesInputValue,
+        savedMoviesInputValue,
+        setSavedMoviesInputValue,
+        shortFilmsCheckboxValue,
+        setShortFilmsCheckboxValue,
+        savedMovies,
+        setSavedMovies,
+        isFirstSearchHappened, 
+        setIsFirstSearchHappened,
+        setRenderedMovies,
+        renderedMovies,
+        }}>
     <div>
       <Switch>
         <Route path="/signup">
