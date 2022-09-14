@@ -7,8 +7,10 @@ import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import { Route, Switch, useHistory } from "react-router-dom";
+import api from "../../utils/Api";
 import NotFound from "../NotFound/NotFound";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 import { register, login, validToken } from "../../utils/auth";
 
@@ -17,12 +19,30 @@ function App() {
   // const [name, setName] = useState(false);
   // const [email, setEmail] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [currentUser, setСurrentUser] = useState({
+    name: "",
+    email: "",
+  });
 
   const history = useHistory();
 
   useEffect(() => {
     checkToken();
   });
+
+  useEffect(() => {
+    const token = localStorage.getItem('jwt');
+
+    api
+      .getUserInfo(token)
+      .then((data) => {
+        console.log('userInfo', data.data)
+        setСurrentUser(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [loggedIn]);
 
   function onRegister(email, password, name) {
     register(password, email, name)
@@ -56,7 +76,7 @@ function App() {
       validToken(token)
       .then((res) => {
         if(res) {
-          console.log(res.data)
+          console.log('checkToken');
           setLoggedIn(true);
           history.push('/movies');
         };
@@ -74,7 +94,19 @@ function App() {
     setLoggedIn(false);
   }
 
+  //user
+
+  function handleUpdateUser({ name, email }) {
+    api
+      .updateUserInfo({ name, email })
+      .then(() => {console.log('update')})
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   return (
+    <CurrentUserContext.Provider value={currentUser}>
     <div>
       <Switch>
         <Route path="/signup">
@@ -108,6 +140,7 @@ function App() {
               logoutProfile={logoutProfile}
               component={Profile}
               loggedIn={loggedIn}
+              onUpdateUser={handleUpdateUser}
               exact
               path='/profile' />
           </Switch>
@@ -120,6 +153,7 @@ function App() {
         </Route>
       </Switch>
     </div>
+    </CurrentUserContext.Provider>
   );
 }
 

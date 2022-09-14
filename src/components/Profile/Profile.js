@@ -1,48 +1,59 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 import './Profile.css';
 
+function Profile({ logoutProfile, onUpdateUser }) {
+    const currentUser = React.useContext(CurrentUserContext);
+    const [name, setName] = React.useState('');
+    const [email, setEmail] = React.useState('');
 
+    React.useEffect(() => {
+        setName(currentUser.name);
+        setEmail(currentUser.email);
+    }, [currentUser]);
 
-function Profile({logoutProfile}) {
-    const user = {
-        name: 'Имя',
-        email: '******@*****.***'
-    };
-    const [name, setName] = React.useState(user.name);
     function handleChangeName(e) {
         setName(e.target.value);
-      }
-    const [email, setEmail] = React.useState(user.email);
+    }
     function handleChangeEmail(e) {
         setEmail(e.target.value);
-      }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        onUpdateUser({
+            name: name,
+            email: email,
+        });
+        currentUser.name = name;
+        currentUser.email = email;
+    }
 
     return (
         <section className="profile">
-            <h2 className='profile__title'>{`Привет, ${user.name}`}</h2>
-            <form className='profile__form' name='profile-form'>
+            <h2 className='profile__title'>{`Привет, ${currentUser.name}`}</h2>
+            <form className='profile__form' name='profile-form' onSubmit={handleSubmit}>
                 <div className='profile__form-group'>
-                    <input 
-                        className='profile__input'  
-                        name="name" 
-                        type='text' 
+                    <input
+                        className='profile__input'
+                        name="name"
+                        type='text'
                         id='profile__name'
                         value={name || ''}
-                        onChange={handleChangeName}  
-                        required 
-                        minLength={2} 
+                        onChange={handleChangeName}
+                        required
+                        minLength={2}
                         maxLength={40} />
                     <label htmlFor="profile__name" className="form__label form__label_name">Имя</label>
-                    <input 
-                        className='profile__input'  
-                        name="email" 
-                        type='text' 
-                        id='profile__email' 
+                    <input
+                        className='profile__input'
+                        name="email"
+                        type='text'
+                        id='profile__email'
                         value={email || ''}
-                        onChange={handleChangeEmail} 
-                        required 
-                        minLength={2} 
+                        onChange={handleChangeEmail}
+                        required
+                        minLength={2}
                         maxLength={40} />
                     <label htmlFor="profile__email" className="form__label form__label_email">E-mail</label>
                 </div>
