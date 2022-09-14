@@ -1,0 +1,31 @@
+.elements{
+    
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px,360px));
+    grid-gap: 58px 30px;
+    margin: 66px auto 26px;
+    color: black;
+    align-content: center;
+    min-height: 40vh;
+    justify-content: center;
+}
+
+@media screen and (max-width: 910px) {
+    .elements{
+        margin-top: 80px;
+        grid-template-columns: repeat(auto-fill, minmax(339px,339px));
+        grid-gap: 45px 29px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .elements {
+        margin-top: 41px;
+        grid-template-columns: repeat(auto-fill, minmax(300px,300px));
+        grid-gap: 37px 29px;
+    }
+}
+
+

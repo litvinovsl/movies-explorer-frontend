@@ -1,0 +1,24 @@
+.more-movies{
+    padding-top: 50px;
+    padding-bottom: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.more-movies__button{
+    width: 320px;
+    height: 36px;
+    border: solid #424242 1px;
+    background-color: transparent;
+    border-radius: 6px;
+    color: #FFF;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+}
+
+.more-movies__button:hover {
+    opacity: .6;
+}

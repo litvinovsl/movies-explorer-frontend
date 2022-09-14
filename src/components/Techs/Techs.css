@@ -1,0 +1,116 @@
+.techs{
+    padding: 100px 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #272727;
+}
+
+.techs__title{
+    margin: 90px 0 26px;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: 0.02em;
+}
+
+.techs__text{
+    width: 460px;
+    min-height: 40px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.04em;
+    text-align: center;
+    margin-bottom: 83px;
+}
+
+.techs__list{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    padding: 0;
+}
+
+.techs__list-item{
+    width: 90px;
+    padding: 21px 0 22px;
+    text-justify: center;
+    text-align: center;
+    margin: auto;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: -0.04em;
+    border: none;
+    border-radius: 10px;
+    background-color: #303030;
+    border-width: 2px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .techs{
+        padding: 90px 50px;
+    }
+    .techs__title{
+        margin: 79px 0 23px;
+    }
+    .techs__text{
+        font-size: 12px;
+        line-height: 18px;
+        margin-bottom: 62px;
+    }
+    .techs__list-item{
+        width: 84px;
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .techs{
+        padding: 70px 18px;
+    }
+    .techs__title{
+        margin-top: 59px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .techs__text{
+        font-size: 11px;
+        line-height: 16px;
+        max-width: 292px;
+        margin-bottom: 27px;
+    }
+    .techs__list{
+        min-width: 180px;
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .techs__list-item{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .techs{
+        background-color: #202020;
+    }
+    .techs__list{
+        width: 180px;
+        flex-direction: row;
+        justify-content: start;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    .techs__list-item{
+        margin: 0;
+    }
+    .section-title_border-black{
+		border-color: #000;
+	}
+}

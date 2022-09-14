@@ -1,0 +1,139 @@
+.about-project {
+	padding: 110px 70px;
+	background-color: #202020;
+}
+
+.about-project__columns {
+	padding: 70px 0 0;
+	margin: 0 0 95px;
+	list-style: none;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.about-project__column {
+	width: 48.2%;
+	display: flex;
+	flex-flow: column nowrap;
+	font-weight: 400;
+}
+
+.about-project__column-title {
+	margin: 0 0 26px;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: 24px;
+	letter-spacing: -0.04em;
+}
+
+.about-project__column-text {
+	margin: 0;
+    font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.about-project__period {
+	display: flex;
+	flex-flow: row nowrap;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.about-project__period-column-title {
+	margin: 0;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 17px;
+}
+
+.about-project__period-column_type_small {
+	width: 20%;
+}
+
+.about-project__period-column_type_big {
+	flex-grow: 1;
+}
+
+.about-project__period-title {
+	padding: 10px 0;
+	text-align: center;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.about-project__period-title_type_small {
+	background-color: #2be080;
+    color: black;
+}
+
+.about-project__period-title_type_big {
+	background-color: #303030;
+}
+
+.about-project__period-column-text {
+	margin: 0;
+	padding: 0px 0 0;
+	color: #8B8B8B;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .about-project {
+		padding: 90px 50px;
+	}
+	.about-project__columns {
+		margin-bottom: 79px;
+	}
+	.about-project__column-title {
+		margin-bottom: 22px;
+	}
+	.about-project__column-text {
+		font-size: 12px;
+		line-height: 18px;
+	}
+	.about-project__period-column_type_small{
+		width: 21%;
+	}
+}
+
+@media screen and (max-width: 450px) {
+    .about-project {
+		padding: 70px 18px;
+	}
+	.about-project__columns {
+		padding-top: 60px;
+		margin-bottom: 49px;
+		flex-direction: column;
+		gap: 58px;
+	}
+	.about-project__column{
+		width: 100%;
+	}
+	.about-project__column-title {
+		margin-bottom: 15px;
+		font-size: 18px;
+		line-height: 22px;
+	}
+	.about-project__column-text {
+		font-size: 11px;
+		line-height: 16px;
+	}
+	.about-project__period-title{
+		padding: 11px 0;
+		font-size: 11px;
+		line-height: 13px;
+	}
+	.about-project__period-column-text{
+		font-size: 11px;
+		line-height: 13px;
+	}
+	.about-project__period-column_type_small{
+		width: 35%;
+	}
+}

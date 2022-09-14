@@ -1,0 +1,157 @@
+.element{
+    overflow:hidden;
+    display: grid;
+    width: 360px;
+    grid-template-columns: 1fr 65px;
+    grid-template-rows: 1fr;
+    position: relative;
+}
+
+.element__name{
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFF;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 190px;
+    margin: 0;
+    margin-top: 14px;
+    margin-left: 13px;
+}
+
+
+.element__like-counter{
+    align-self: center;
+    justify-self: center;
+    color: #8B8B8B;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 10px;
+    margin: 0;
+    
+}
+.element__time-background{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 18px;
+    background-color: #2F2F2F;
+    margin-top: 14px;
+    border-radius: 3px;
+}
+
+.element__image{
+    border-radius: 6px;
+    max-width: 360px;
+    height: 201px;
+    object-fit: cover;
+    grid-column: 1/3;
+    cursor: pointer;
+    z-index: 3;
+}
+
+.element__image:hover{
+    z-index: 0;
+}
+
+.element__button{
+    background-color: #313131;
+    border: #313131 solid 2px;
+    color: #FFF;
+    width: 72px;
+    height: 21px;
+    background-image: url(../../images/save-but.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 9px;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 2;
+}
+
+.element__save_active{
+    background-image: url(../../images/save-but-active.svg);
+    border-color: transparent;
+    width: 21px;
+    height: 21px;
+    z-index: 4;
+
+}
+
+.element__save_active:hover{
+    background-image: url(../../images/save-but-del.svg);
+}
+
+.element__button:hover{
+    cursor: pointer;
+    z-index: 4;
+}
+
+.element__delete{
+    background-image: url(../../images/icon-search.svg);
+    width: 18px;
+    height: 19px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    transition: opacity .3s ease-in-out;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+.element__delete:hover {
+    opacity: .5;
+}
+
+.element__delete_none{
+    display: none;
+}
+
+@media screen and (max-width: 910px) {
+    .element__image {
+        max-width: 339px;
+        height: 190px;
+    }
+    .element {
+        width: 339px;
+        grid-template-columns: 1fr 54px;
+    }
+    .element__name{
+        margin-top: 25px;
+        margin-left: 0;
+    }
+    .element__time-background{
+        margin-top: 25px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .element__image {
+        max-width: 300px;
+        height: 168px;
+    }
+    .element {
+        width: 300px;
+        grid-template-columns: 1fr 54px;
+    }
+    .element__button{
+        top: 10px;
+        right: 10px;
+    }
+    .element__name{
+        margin-top: 15px;
+        font-size: 12px;
+    line-height: 15px;
+    }
+    .element__time-background{
+        margin-top: 15px;
+    }
+}
