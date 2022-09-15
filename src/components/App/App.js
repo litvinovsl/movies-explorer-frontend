@@ -20,16 +20,13 @@ function App() {
   // const [name, setName] = useState(false);
   // const [email, setEmail] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setСurrentUser] = useState({
-    name: "",
-    email: "",
-  });
+  const [currentUser, setСurrentUser] = useState({});
 
   const history = useHistory();
 
   useEffect(() => {
     checkToken();
-  });
+  }, []);
 
   // useEffect(() => {
   //   if(loggedIn){
@@ -52,7 +49,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
-  }, [loggedIn]);
+  }, []);
 
   function onRegister(email, password, name) {
     register(password, email, name)
@@ -119,11 +116,9 @@ function App() {
 
   const [initialMovies, setInitialMovies] = useState([]);
   const [movies, setMovies] = useState([]);
-	const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
 	const [moviesInputValue, setMoviesInputValue] = useState('');
 	const [savedMoviesInputValue, setSavedMoviesInputValue] = useState('');
 	const [shortFilmsCheckboxValue, setShortFilmsCheckboxValue] = useState(false);
-	const [savedMovies, setSavedMovies] = useState([]);
   const [isFirstSearchHappened, setIsFirstSearchHappened] = useState(false);
   const [renderedMovies, setRenderedMovies] = useState([]);
 
@@ -133,24 +128,21 @@ function App() {
     <CurrentUserContext.Provider 
       value={{
         currentUser,
-        initialMovies,
-        setInitialMovies,
-        movies,
-        setMovies,
-        filteredSavedMovies,
-        setFilteredSavedMovies,
-        moviesInputValue,
-        setMoviesInputValue,
+        setСurrentUser,
+        initialMovies, //
+        setInitialMovies, //
+        movies, //
+        setMovies, //
+        moviesInputValue, //
+        setMoviesInputValue, //
         savedMoviesInputValue,
         setSavedMoviesInputValue,
-        shortFilmsCheckboxValue,
-        setShortFilmsCheckboxValue,
-        savedMovies,
-        setSavedMovies,
-        isFirstSearchHappened, 
-        setIsFirstSearchHappened,
-        setRenderedMovies,
-        renderedMovies,
+        shortFilmsCheckboxValue, //
+        setShortFilmsCheckboxValue, //
+        isFirstSearchHappened,  //
+        setIsFirstSearchHappened, //
+        setRenderedMovies, //
+        renderedMovies, //
         }}>
     <div>
       <Switch>

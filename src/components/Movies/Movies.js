@@ -20,7 +20,7 @@ function Movies({ loggedIn }) {
         savedMovies,
     } = context;
 
-    console.log(movies);
+    // console.log(movies);
 
     const getSavedSearchResults = useCallback(() => {
         const savedSearchResult = JSON.parse(localStorage.getItem('movies'));

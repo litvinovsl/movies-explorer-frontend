@@ -17,7 +17,6 @@ function SearchForm() {
         moviesInputValue,
         setMoviesInputValue,
         shortFilmsCheckboxValue,
-        isFirstSearchHappened, 
         setIsFirstSearchHappened,
 	} = context;
 
@@ -26,12 +25,7 @@ function SearchForm() {
 		getAndFilterMovies();
 	};
 
-    React.useEffect(()=>{ return ()=>{setIsFirstSearchHappened(false)}}, [setIsFirstSearchHappened]);
-
     const getAndFilterMovies = () => {
-		if (!isFirstSearchHappened) {
-        // console.log('!первый')
-
 			moviesApi
 				.getMovies()
 				.then((data) => {
@@ -55,7 +49,6 @@ function SearchForm() {
 				.catch((err) => {
 					console.log(err);
 				});
-		} else {
 			try {
 				const filteredByKeyWord = filterByKeyWord(initialMovies, moviesInputValue);
 				setMovies(filteredByKeyWord);
@@ -75,7 +68,6 @@ function SearchForm() {
 			} catch (err) {
 				console.log(err);
 			}
-		}
 	};
 
     const handleMoviesInputChange = (e) => {

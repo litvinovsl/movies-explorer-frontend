@@ -1,19 +1,28 @@
-import React from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import './Profile.css';
 
 function Profile({ logoutProfile, onUpdateUser }) {
-    const currentUser = React.useContext(CurrentUserContext);
-    const [name, setName] = React.useState('');
-    const [email, setEmail] = React.useState('');
+    const context = useContext(CurrentUserContext);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
 
-    React.useEffect(() => {
+    const {
+        currentUser,
+        setСurrentUser,
+    } = context;
+
+    console.log(currentUser);
+
+    useEffect(() => {
         setName(currentUser.name);
         setEmail(currentUser.email);
     }, [currentUser]);
 
     function handleChangeName(e) {
         setName(e.target.value);
+        console.log(e.target.value);
+        console.log('name ', name)
     }
     function handleChangeEmail(e) {
         setEmail(e.target.value);
@@ -25,14 +34,17 @@ function Profile({ logoutProfile, onUpdateUser }) {
             name: name,
             email: email,
         });
-        currentUser.name = name;
-        currentUser.email = email;
+        setСurrentUser({ name: name, email: email });
     }
 
     return (
         <section className="profile">
             <h2 className='profile__title'>{`Привет, ${currentUser.name}`}</h2>
-            <form className='profile__form' name='profile-form' onSubmit={handleSubmit}>
+            <form
+                className='profile__form'
+                name='profile-form'
+                onSubmit={handleSubmit}
+            >
                 <div className='profile__form-group'>
                     <input
                         className='profile__input'
