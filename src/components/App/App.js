@@ -114,13 +114,10 @@ function App() {
 
   //====================--movies--=================//
 
-  const [initialMovies, setInitialMovies] = useState([]);
+  // const [initialMovies, setInitialMovies] = useState([]);
   const [movies, setMovies] = useState([]);
-	const [moviesInputValue, setMoviesInputValue] = useState('');
-	const [savedMoviesInputValue, setSavedMoviesInputValue] = useState('');
-	const [shortFilmsCheckboxValue, setShortFilmsCheckboxValue] = useState(false);
-  const [isFirstSearchHappened, setIsFirstSearchHappened] = useState(false);
-  const [renderedMovies, setRenderedMovies] = useState([]);
+	const [moviesFilterValue, setMoviesFilterValue] = useState('');
+	// const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
 
   //===============================================//
 
@@ -129,20 +126,11 @@ function App() {
       value={{
         currentUser,
         setСurrentUser,
-        initialMovies, //
-        setInitialMovies, //
         movies, //
         setMovies, //
-        moviesInputValue, //
-        setMoviesInputValue, //
-        savedMoviesInputValue,
-        setSavedMoviesInputValue,
-        shortFilmsCheckboxValue, //
-        setShortFilmsCheckboxValue, //
-        isFirstSearchHappened,  //
-        setIsFirstSearchHappened, //
-        setRenderedMovies, //
-        renderedMovies, //
+        moviesFilterValue, //
+        setMoviesFilterValue, //
+        // shortFilmsFilter,  //
         }}>
     <div>
       <Switch>

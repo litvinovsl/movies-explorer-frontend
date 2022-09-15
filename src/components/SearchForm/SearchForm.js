@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
@@ -11,67 +11,50 @@ import { handleMovies, filterByKeyWord, filterByDuration } from '../../utils/uti
 function SearchForm() {
     const context = React.useContext(CurrentUserContext);
     const {
-        initialMovies,
-        setInitialMovies,
+		setMoviesFilterValue,
+		moviesFilterValue,
         setMovies,
-        moviesInputValue,
-        setMoviesInputValue,
-        shortFilmsCheckboxValue,
-        setIsFirstSearchHappened,
+		movies,
 	} = context;
 
     const handleMoviesSearchClick = (e) => {
 		e.preventDefault();
 		getAndFilterMovies();
 	};
+	console.log('input',moviesFilterValue);
 
     const getAndFilterMovies = () => {
 			moviesApi
 				.getMovies()
 				.then((data) => {
+					console.log('1. data: ', data);
 					data = handleMovies(data);
-					setInitialMovies(data);
-					setIsFirstSearchHappened(true);
-					const filteredByKeyWord = filterByKeyWord(data, moviesInputValue);
-					setMovies(filteredByKeyWord);
-					let finallyFiltered = [];
-					if (shortFilmsCheckboxValue) {
-						finallyFiltered = filterByDuration(filteredByKeyWord);
-					} else {
-						finallyFiltered = filteredByKeyWord;
-					}
-					if (finallyFiltered.length) {
-						localStorage.setItem('movies', JSON.stringify(finallyFiltered));
-						localStorage.setItem('shortFilmsCheckboxValue', shortFilmsCheckboxValue);
-						localStorage.setItem('moviesInputValue', moviesInputValue);
+					console.log('1. NEWdata: ', data.length);
+					const filteredByInputValue = filterByKeyWord(data, moviesFilterValue);
+					//нашли наши фильмы по поиску
+
+					setMovies(filteredByInputValue);
+					console.log(movies);
+
+					//====== checkbox FILTER ======================
+					// if (shortFilmsFilter) {
+					// 	setMovies(filterByDuration(movies));
+					// }
+					if (filteredByInputValue.length) {
+						localStorage.setItem('movies', JSON.stringify(filteredByInputValue));
+						// console.log('setMovies ARR', localStorage.getItem('movies'));
+
+						// localStorage.setItem('shortFilmsCheckboxValue', shortFilmsFilter);
+						// localStorage.setItem('moviesInputValue', moviesFilterValue);
 					}
 				})
 				.catch((err) => {
 					console.log(err);
 				});
-			try {
-				const filteredByKeyWord = filterByKeyWord(initialMovies, moviesInputValue);
-				setMovies(filteredByKeyWord);
-				let finallyFiltered = [];
-				if (shortFilmsCheckboxValue) {
-					finallyFiltered = filterByDuration(filteredByKeyWord);
-				} else {
-					finallyFiltered = filteredByKeyWord;
-				}
-				if (finallyFiltered.length) {
-					localStorage.setItem('movies', JSON.stringify(finallyFiltered));
-					localStorage.setItem('shortFilmsCheckboxValue', shortFilmsCheckboxValue);
-					localStorage.setItem('moviesInputValue', moviesInputValue);
-				} else {
-                    console.log('DONT films')
-				}
-			} catch (err) {
-				console.log(err);
-			}
 	};
 
     const handleMoviesInputChange = (e) => {
-		setMoviesInputValue(e.target.value);
+		setMoviesFilterValue(e.target.value);
 	};
 
 

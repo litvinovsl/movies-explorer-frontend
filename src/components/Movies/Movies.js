@@ -5,7 +5,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import MoreMovies from '../MoreMovies/MoreMovies';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
-import { handleDuration, filterByDuration } from '../../utils/utils';
 
 
 function Movies({ loggedIn }) {
@@ -13,56 +12,31 @@ function Movies({ loggedIn }) {
     const {
         movies,
         setMovies,
-        setRenderedMovies,
-        setMoviesInputValue,
-        shortFilmsCheckboxValue,
-        setShortFilmsCheckboxValue,
-        savedMovies,
     } = context;
 
-    // console.log(movies);
+    // console.log('фильмы в мовиес ',movies);
 
     const getSavedSearchResults = useCallback(() => {
+        console.log('тут');
         const savedSearchResult = JSON.parse(localStorage.getItem('movies'));
-        const savedSearchText = localStorage.getItem('moviesInputValue');
-        const savedСheckboxState = JSON.parse(
-            localStorage.getItem('shortFilmsCheckboxValue')
-        );
+		// console.log('тут ARR', localStorage.getItem('movies'));
+
         if (savedSearchResult) {
             setMovies(savedSearchResult);
         }
-        if (savedSearchText) {
-            setMoviesInputValue(savedSearchText);
-        }
-        if (savedСheckboxState) {
-            setShortFilmsCheckboxValue(savedСheckboxState);
-        }
-    }, [setMovies, setMoviesInputValue, setShortFilmsCheckboxValue]);
+    },[setMovies]);
 
     useEffect(() => {
         getSavedSearchResults();
     }, [getSavedSearchResults]);
-
-    useEffect(() => {
-        let renderedFilms;
-        if (shortFilmsCheckboxValue) {
-            renderedFilms = filterByDuration(movies);
-        } else {
-            renderedFilms = [...movies];
-        }
-        renderedFilms = handleDuration(renderedFilms);
-        setRenderedMovies(renderedFilms);
-    }, [movies, savedMovies, setRenderedMovies, shortFilmsCheckboxValue]);
-
-
-
 
     return (
         <main className='movies'>
             <SearchForm />
             {/* <Preloader /> */}
             <MoviesCardList
-                movies={movies} />
+                movies={movies} 
+                />
             <MoreMovies />
         </main>
     );
