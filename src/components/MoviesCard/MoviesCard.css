@@ -45,7 +45,7 @@
 
 .element__image{
     border-radius: 6px;
-    max-width: 360px;
+    width: 360px;
     height: 201px;
     object-fit: cover;
     grid-column: 1/3;
@@ -117,7 +117,7 @@
 
 @media screen and (max-width: 910px) {
     .element__image {
-        max-width: 339px;
+        width: 339px;
         height: 190px;
     }
     .element {
@@ -135,7 +135,7 @@
 
 @media screen and (max-width: 400px) {
     .element__image {
-        max-width: 300px;
+        width: 300px;
         height: 168px;
     }
     .element {
@@ -149,7 +149,7 @@
     .element__name{
         margin-top: 15px;
         font-size: 12px;
-    line-height: 15px;
+        line-height: 15px;
     }
     .element__time-background{
         margin-top: 15px;
