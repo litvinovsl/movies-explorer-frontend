@@ -1,10 +1,11 @@
-import { useEffect, useContext, useCallback } from "react";
+import { useEffect, useContext, useCallback, useState } from "react";
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import MoreMovies from '../MoreMovies/MoreMovies';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { handleDuration } from '../../utils/utils';
 
 
 function Movies({ loggedIn }) {
@@ -13,6 +14,8 @@ function Movies({ loggedIn }) {
         movies,
         setMovies,
     } = context;
+
+    const [mySearchMovie, setMySerchMovie] = useState([]);
 
     // console.log('фильмы в мовиес ',movies);
 
@@ -35,7 +38,7 @@ function Movies({ loggedIn }) {
             <SearchForm />
             {/* <Preloader /> */}
             <MoviesCardList
-                movies={movies} 
+                movies={mySearchMovie} 
                 />
             <MoreMovies />
         </main>

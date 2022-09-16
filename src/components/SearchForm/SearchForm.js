@@ -6,7 +6,7 @@ import searchIcon from '../../images/icon-search.svg';
 import submitIcon from '../../images/search-submit-button.svg';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import moviesApi from '../../utils/MoviesApi';
-import { handleMovies, filterByKeyWord, filterByDuration } from '../../utils/utils';
+import { handleMovies, filterByKeyWord, filterByDuration, handleDuration } from '../../utils/utils';
 
 function SearchForm() {
     const context = React.useContext(CurrentUserContext);
@@ -27,11 +27,15 @@ function SearchForm() {
 			moviesApi
 				.getMovies()
 				.then((data) => {
-					console.log('1. data: ', data);
+					// console.log('1. data: ', data);
 					data = handleMovies(data);
-					console.log('1. NEWdata: ', data.length);
+					// console.log('1. NEWdata: ', data.length);
 					const filteredByInputValue = filterByKeyWord(data, moviesFilterValue);
-					//нашли наши фильмы по поиску
+					// console.log('fbD: ', filteredByInputValue)
+					// //нашли наши фильмы по поиску
+					// handleDuration(filteredByInputValue);
+					// console.log('!!!fbD: ', filteredByInputValue)
+
 
 					setMovies(filteredByInputValue);
 					console.log(movies);

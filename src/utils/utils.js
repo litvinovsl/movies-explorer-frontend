@@ -16,17 +16,6 @@ export function handleMovies(movies) {
 	});
 }
 
-export function handleDuration(movies) {
-	return movies.map((movie) => {
-		const handledDuration =
-			Math.trunc(movie.duration / 60) + ' ч ' + (movie.duration % 60) + ' м';
-		return {
-			...movie,
-			duration: handledDuration,
-		};
-	});
-}
-
 // Функция фильтрации фильмов по длительности
 export function filterByDuration(movies) {
 	const durationLimit = 40;
