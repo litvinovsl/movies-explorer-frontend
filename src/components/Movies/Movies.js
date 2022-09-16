@@ -20,7 +20,7 @@ function Movies({ loggedIn }) {
     // console.log('фильмы в мовиес ',movies);
 
     const getSavedSearchResults = useCallback(() => {
-        console.log('тут');
+        // console.log('тут');
         const savedSearchResult = JSON.parse(localStorage.getItem('movies'));
 		// console.log('тут ARR', localStorage.getItem('movies'));
 

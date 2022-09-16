@@ -43,7 +43,7 @@ function App() {
     api
       .getUserInfo(token)
       .then((data) => {
-        console.log('userInfo', data.data)
+        // console.log('userInfo', data.data)
         setСurrentUser(data.data);
       })
       .catch((err) => {
@@ -83,7 +83,7 @@ function App() {
       validToken(token)
       .then((res) => {
         if(res) {
-          console.log('checkToken');
+          // console.log('checkToken');
           setLoggedIn(true);
           history.push('/movies');
         };
@@ -117,7 +117,7 @@ function App() {
   // const [initialMovies, setInitialMovies] = useState([]);
   const [movies, setMovies] = useState([]);
 	const [moviesFilterValue, setMoviesFilterValue] = useState('');
-	// const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
+	const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
 
   //===============================================//
 
@@ -126,11 +126,12 @@ function App() {
       value={{
         currentUser,
         setСurrentUser,
-        movies, //
-        setMovies, //
-        moviesFilterValue, //
-        setMoviesFilterValue, //
-        // shortFilmsFilter,  //
+        movies,
+        setMovies,
+        moviesFilterValue, 
+        setMoviesFilterValue, 
+        shortFilmsFilter,
+        setShortFilmsFilter  
         }}>
     <div>
       <Switch>

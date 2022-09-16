@@ -14,38 +14,30 @@ function SearchForm() {
 		setMoviesFilterValue,
 		moviesFilterValue,
         setMovies,
-		movies,
+		shortFilmsFilter
 	} = context;
 
     const handleMoviesSearchClick = (e) => {
 		e.preventDefault();
 		getAndFilterMovies();
 	};
-	console.log('input',moviesFilterValue);
+	// console.log('input',moviesFilterValue);
 
     const getAndFilterMovies = () => {
 			moviesApi
 				.getMovies()
 				.then((data) => {
-					// console.log('1. data: ', data);
 					data = handleMovies(data);
-					// console.log('1. NEWdata: ', data.length);
-					const filteredByInputValue = filterByKeyWord(data, moviesFilterValue);
-					// console.log('fbD: ', filteredByInputValue)
-					// //нашли наши фильмы по поиску
-					// handleDuration(filteredByInputValue);
-					// console.log('!!!fbD: ', filteredByInputValue)
-
-
-					setMovies(filteredByInputValue);
-					console.log(movies);
-
+					let filteredMovies = filterByKeyWord(data, moviesFilterValue);
 					//====== checkbox FILTER ======================
-					// if (shortFilmsFilter) {
-					// 	setMovies(filterByDuration(movies));
-					// }
-					if (filteredByInputValue.length) {
-						localStorage.setItem('movies', JSON.stringify(filteredByInputValue));
+					if (shortFilmsFilter) {
+						filteredMovies = filterByDuration(filteredMovies);
+						setMovies(filteredMovies);
+					} else {
+						setMovies(filteredMovies);
+					}
+					if (filteredMovies.length) {
+						localStorage.setItem('movies', JSON.stringify(filteredMovies));
 						// console.log('setMovies ARR', localStorage.getItem('movies'));
 
 						// localStorage.setItem('shortFilmsCheckboxValue', shortFilmsFilter);

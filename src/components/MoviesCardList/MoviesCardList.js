@@ -7,7 +7,7 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 function MoviesCardList({ mySearchMovie }) {
     const context = React.useContext(CurrentUserContext);
     const { movies } = context;
-    console.log('asdadadad', movies)
+    // console.log('asdadadad', movies)
 
 
 
@@ -17,11 +17,11 @@ function MoviesCardList({ mySearchMovie }) {
             <Switch>
                 <Route path="/movies">
                     {movies.map((movie) => {
-                        console.log('1 : ', typeof movie.duration);
+                        // console.log('1 : ', typeof movie.duration);
                         if (typeof movie.duration === 'number') {
                             movie.duration = Math.trunc(movie.duration / 60) + 'ч ' + (movie.duration % 60) + 'м';
                         }
-                        console.log('2 : ', typeof movie.duration);
+                        // console.log('2 : ', typeof movie.duration);
                         return <MoviesCard key={movie.movieId} movie={movie} />;
                     })}
                 </Route>
