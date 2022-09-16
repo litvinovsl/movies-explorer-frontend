@@ -13,21 +13,27 @@ function Movies({ loggedIn }) {
     const {
         movies,
         setMovies,
+        isPreloader
     } = context;
 
     const [mySearchMovie, setMySerchMovie] = useState([]);
+    console.log('mySearchMovie: ',mySearchMovie);
 
-    // console.log('фильмы в мовиес ',movies);
+
+    console.log('фильмы в мовиес ',movies);
 
     const getSavedSearchResults = useCallback(() => {
         // console.log('тут');
         const savedSearchResult = JSON.parse(localStorage.getItem('movies'));
-		// console.log('тут ARR', localStorage.getItem('movies'));
+        // console.log('тут ARR', localStorage.getItem('movies'));
 
         if (savedSearchResult) {
             setMovies(savedSearchResult);
         }
-    },[setMovies]);
+    }, [setMovies]);
+
+    // console.log('preload: ', isPreloader);
+
 
     useEffect(() => {
         getSavedSearchResults();
@@ -36,10 +42,12 @@ function Movies({ loggedIn }) {
     return (
         <main className='movies'>
             <SearchForm />
-            {/* <Preloader /> */}
-            <MoviesCardList
-                movies={mySearchMovie} 
-                />
+            {isPreloader ? (
+				<Preloader />
+			) : movies.length ? (
+				<MoviesCardList />
+			) : null}
+            {/* <MoviesCardList /> */}
             <MoreMovies />
         </main>
     );

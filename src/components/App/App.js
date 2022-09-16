@@ -118,6 +118,8 @@ function App() {
   const [movies, setMovies] = useState([]);
 	const [moviesFilterValue, setMoviesFilterValue] = useState('');
 	const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
+  const [isPreloader, setIsPreloader] = useState(false);
+
 
   //===============================================//
 
@@ -131,7 +133,9 @@ function App() {
         moviesFilterValue, 
         setMoviesFilterValue, 
         shortFilmsFilter,
-        setShortFilmsFilter  
+        setShortFilmsFilter,
+        isPreloader, 
+        setIsPreloader 
         }}>
     <div>
       <Switch>
