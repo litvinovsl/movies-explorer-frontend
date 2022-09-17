@@ -15,11 +15,11 @@ class Api {
     getUserInfo(token) {
         const newUrl = this._baseUrl + '/users/me';
         return fetch(newUrl, {
-          method: 'GET',
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization" : `Bearer ${token}`
-          },
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
         }).then(this._checkReply);
     }
 
@@ -31,14 +31,25 @@ class Api {
             body: JSON.stringify({ name, email }),
         }).then(this._checkReply);
     }
+
+    saveMovie(movie) {
+        const newUrl = this._baseUrl + '/movies';
+        return fetch(newUrl, {
+            method: 'POST',
+            headers: this._headers,
+            body: JSON.stringify(movie),
+        }).then(this._checkReply);
+
+    }
+
 }
 
 const api = new Api({
     baseUrl: 'https://api.movie.search.nomoredomains.sbs',
     headers: {
-      "Authorization" : `Bearer ${localStorage.getItem('jwt')}`,
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
+        "Authorization": `Bearer ${localStorage.getItem('jwt')}`,
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
     }
 });
 

@@ -79,18 +79,17 @@ function App() {
 
   function checkToken() {
     const token = localStorage.getItem('jwt');
-    if(token) {
+    if (token) {
       validToken(token)
-      .then((res) => {
-        if(res) {
-          // console.log('checkToken');
-          setLoggedIn(true);
-          history.push('/movies');
-        };
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((res) => {
+          if (res) {
+            setLoggedIn(true);
+            history.push('/movies');
+          };
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }
 
@@ -106,7 +105,7 @@ function App() {
   function handleUpdateUser({ name, email }) {
     api
       .updateUserInfo({ name, email })
-      .then(() => {console.log('update')})
+      .then(() => { console.log('update') })
       .catch((err) => {
         console.log(err);
       });
@@ -116,73 +115,82 @@ function App() {
 
   // const [initialMovies, setInitialMovies] = useState([]);
   const [movies, setMovies] = useState([]);
-	const [moviesFilterValue, setMoviesFilterValue] = useState('');
-	const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
+  const [allInitilMovies, setAllInitilMovies] = useState([]);
+  const [moviesFilterValue, setMoviesFilterValue] = useState('');
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
   const [isPreloader, setIsPreloader] = useState(false);
+  const [moviesWithLikeState, setMoviesWithLikeState] = useState([]);
 
 
   //===============================================//
 
   return (
-    <CurrentUserContext.Provider 
+    <CurrentUserContext.Provider
       value={{
         currentUser,
         setСurrentUser,
         movies,
         setMovies,
-        moviesFilterValue, 
-        setMoviesFilterValue, 
+        moviesFilterValue,
+        setMoviesFilterValue,
         shortFilmsFilter,
         setShortFilmsFilter,
-        isPreloader, 
-        setIsPreloader 
-        }}>
-    <div>
-      <Switch>
-        <Route path="/signup">
-          <Register
-            onRegister={onRegister} />
-        </Route>
-        <Route path="/signin">
-          <Login
-            onLogin={onLogin} />
-        </Route>
-        <Route exact path="/">
-          <Header
-            class='header_main' />
-          <Main />
-          <Footer />
-        </Route>
-        <Route exact path={['/movies', '/saved-movies', '/profile']}>
-          <Header />
-          <Switch>
-            <ProtectedRoute
-              component={Movies}
-              loggedIn={loggedIn}
-              exact
-              path='/movies' />
-            <ProtectedRoute
-              component={Movies}
-              loggedIn={loggedIn}
-              exact
-              path='/saved-movies' />
-            <ProtectedRoute
-              logoutProfile={logoutProfile}
-              component={Profile}
-              loggedIn={loggedIn}
-              onUpdateUser={handleUpdateUser}
-              exact
-              path='/profile' />
-          </Switch>
-          <Route exact path={['/', '/movies', '/saved-movies']}>
+        isPreloader,
+        setIsPreloader,
+        allInitilMovies,
+        setAllInitilMovies,
+        savedMovies, 
+        setSavedMovies,
+        moviesWithLikeState, 
+        setMoviesWithLikeState
+      }}>
+      <div>
+        <Switch>
+          <Route path="/signup">
+            <Register
+              onRegister={onRegister} />
+          </Route>
+          <Route path="/signin">
+            <Login
+              onLogin={onLogin} />
+          </Route>
+          <Route exact path="/">
+            <Header
+              class='header_main' />
+            <Main />
             <Footer />
           </Route>
-        </Route>
-        <Route path='*'>
-          <NotFound />
-        </Route>
-      </Switch>
-    </div>
+          <Route exact path={['/movies', '/saved-movies', '/profile']}>
+            <Header />
+            <Switch>
+              <ProtectedRoute
+                component={Movies}
+                loggedIn={loggedIn}
+                exact
+                path='/movies' />
+              <ProtectedRoute
+                component={Movies}
+                loggedIn={loggedIn}
+                exact
+                path='/saved-movies' />
+              <ProtectedRoute
+                logoutProfile={logoutProfile}
+                component={Profile}
+                loggedIn={loggedIn}
+                onUpdateUser={handleUpdateUser}
+                exact
+                path='/profile' />
+            </Switch>
+            <Route exact path={['/', '/movies', '/saved-movies']}>
+              <Footer />
+            </Route>
+          </Route>
+          <Route path='*'>
+            <NotFound />
+          </Route>
+        </Switch>
+      </div>
     </CurrentUserContext.Provider>
   );
 }

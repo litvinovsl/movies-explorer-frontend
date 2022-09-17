@@ -13,14 +13,17 @@ function Movies({ loggedIn }) {
     const {
         movies,
         setMovies,
-        isPreloader
+        isPreloader,
+        savedMovies,
+        setMoviesWithLikeState,
+        shortFilmsFilter
     } = context;
 
     const [mySearchMovie, setMySerchMovie] = useState([]);
-    console.log('mySearchMovie: ',mySearchMovie);
+    // console.log('mySearchMovie: ',mySearchMovie);
 
 
-    console.log('фильмы в мовиес ',movies);
+    // console.log('фильмы в мовиес ',movies);
 
     const getSavedSearchResults = useCallback(() => {
         // console.log('тут');
@@ -38,6 +41,22 @@ function Movies({ loggedIn }) {
     useEffect(() => {
         getSavedSearchResults();
     }, [getSavedSearchResults]);
+
+    useEffect(() => {
+        let moviesWithLike = [];
+        moviesWithLike = [...movies];
+        moviesWithLike = moviesWithLike.map((item) => {
+			return {
+				...item,
+				isLiked: savedMovies.some((savedMovie) => {
+					return item.movieId === savedMovie.movieId;
+				}),
+			};
+		});
+        
+        setMoviesWithLikeState(moviesWithLike);
+        // console.log(moviesWithLike);
+    }, [movies, savedMovies, setMoviesWithLikeState, shortFilmsFilter])
 
     return (
         <main className='movies'>

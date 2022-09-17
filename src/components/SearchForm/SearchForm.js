@@ -16,7 +16,9 @@ function SearchForm() {
 		setMovies,
 		shortFilmsFilter,
 		setIsPreloader,
-		isPreloader
+		isPreloader,
+		allInitilMovies, 
+		setAllInitilMovies
 	} = context;
 
 	const handleMoviesSearchClick = (e) => {
@@ -29,18 +31,26 @@ function SearchForm() {
 		moviesApi
 			.getMovies()
 			.then((data) => {
-				console.log('isPreloader', isPreloader);
+				// console.log('isPreloader', isPreloader);
 				data = handleMovies(data);
+				// console.log(allInitilMovies);
 				let filteredMovies = filterByKeyWord(data, moviesFilterValue);
+				setAllInitilMovies(data);
+				setMovies(filteredMovies);
 				//====== checkbox FILTER ======================
+				let fullFiltered = [];
 				if (shortFilmsFilter) {
-					filteredMovies = filterByDuration(filteredMovies);
-					setMovies(filteredMovies);
+					fullFiltered = filterByDuration(filteredMovies);
+					// setMovies(filteredMovies);
+					// setAllInitilMovies(filteredMovies);
+
 				} else {
-					setMovies(filteredMovies);
+					// setMovies(filteredMovies);
+					fullFiltered = filteredMovies;
 				}
-				if (filteredMovies.length) {
-					localStorage.setItem('movies', JSON.stringify(filteredMovies));
+				if (fullFiltered.length) {
+					localStorage.setItem('movies', JSON.stringify(fullFiltered));
+					// localStorage.setItem('initialMovies', JSON.stringify(allInitilMovies));
 					// console.log('setMovies ARR', localStorage.getItem('movies'));
 
 					// localStorage.setItem('shortFilmsCheckboxValue', shortFilmsFilter);
@@ -52,7 +62,7 @@ function SearchForm() {
 			})
 			.finally(() => {
 				setIsPreloader(false);
-				console.log('isPreloader-fin', isPreloader);
+				// console.log('isPreloader-fin', isPreloader);
 			});
 	};
 
