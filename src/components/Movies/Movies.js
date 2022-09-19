@@ -32,6 +32,8 @@ function Movies({ loggedIn }) {
 
         if (savedSearchResult) {
             setMovies(savedSearchResult);
+            // setMoviesWithLikeState(savedSearchResult);
+
         }
     }, [setMovies]);
 

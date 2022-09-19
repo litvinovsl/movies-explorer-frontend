@@ -42,6 +42,26 @@ class Api {
 
     }
 
+    getMovies(token) {
+        const newUrl = this._baseUrl + '/movies';
+        return fetch(newUrl, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+        }).then(this._checkReply);
+    }
+
+    deleteMovie(movieId){
+        const newUrl = this._baseUrl + `/movies/${movieId}`;
+        return fetch(newUrl, {
+            method: 'DELETE',
+            headers: this._headers,
+        }).then(this._checkReply);
+
+    }
+
 }
 
 const api = new Api({

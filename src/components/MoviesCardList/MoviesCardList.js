@@ -6,8 +6,9 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function MoviesCardList() {
     const context = React.useContext(CurrentUserContext);
-    const { moviesWithLikeState } = context;
-    // console.log('asdadadad', movies)
+    const { moviesWithLikeState, savedMovies } = context;
+    // console.log('asdadadad', savedMovies)
+    
 
 
 
@@ -26,6 +27,14 @@ function MoviesCardList() {
                     })}
                 </Route>
                 <Route path="/saved-movies">
+                    {savedMovies.map((movie) => {
+                        // console.log('1 : ', typeof movie.duration);
+                        if (typeof movie.duration === 'number') {
+                            movie.duration = Math.trunc(movie.duration / 60) + 'ч ' + (movie.duration % 60) + 'м';
+                        }
+                        // console.log('2 : ', typeof movie.duration);
+                        return <MoviesCard key={movie._id} movie={movie} />;
+                    })}
                 </Route>
 
             </Switch>
