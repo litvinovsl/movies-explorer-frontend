@@ -44,12 +44,11 @@ function App() {
           .getMovies(token)
           .then((data) => {
             setSavedMovies(data);
-            console.log(data);
           })
           .catch((err) => {
             console.log(err)
           })
-  }, [isLikedMovie, setIsLikedMovie, isDelLikedMovie, setIsDelLikedMovie]);
+  }, [isLikedMovie, setIsLikedMovie, isDelLikedMovie, setIsDelLikedMovie, loggedIn]);
 
 
   useEffect(() => {

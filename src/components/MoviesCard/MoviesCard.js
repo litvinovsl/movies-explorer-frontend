@@ -11,20 +11,25 @@ function MoviesCard({ movie }) {
         savedMovies,
         setSavedMovies,
         setIsLikedMovie,
-        setIsDelLikedMovie
+        isLikedMovie,
+        setIsDelLikedMovie,
+        isDelLikedMovie
     } = context;
+    // console.log(currentUser);
+    // const isOwn = movie.owner === currentUser._id;
+
+
 
     function click() {
         //меняем длительность обратно на number
         const savedMovie = movies.find((item) => {
             return movie.movieId === item.movieId;
         });
-        console.log('movie.isLiked: ', movie.isLiked);
+        console.log('movie.isLiked: ', movie);
         if (movie.isLiked === false) {
             api.saveMovie(savedMovie)
                 .then((data) => {
-                    setIsLikedMovie(true);
-                    setIsDelLikedMovie(false);
+                    setIsLikedMovie(!isLikedMovie);
                     setSavedMovies([...savedMovies, movie])
                 })
                 .catch((err) => {
@@ -34,13 +39,13 @@ function MoviesCard({ movie }) {
             const deletedMovie = savedMovies.find((item) => {
                 return movie.movieId === item.movieId;
             });
-            console.log('savedMovies ', savedMovies);
-            console.log('deletedMovie ', savedMovies);
+            // console.log('savedMovies ', savedMovies);
+            // console.log('deletedMovie ', savedMovies);
             api
                 .deleteMovie(deletedMovie._id)
                 .then((data) => {
                     setIsLikedMovie(false);
-                    setIsDelLikedMovie(true);
+                    setIsDelLikedMovie(!isDelLikedMovie);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -57,7 +62,7 @@ function MoviesCard({ movie }) {
                 <button className={movieSaveButtonClassName} onClick={click}></button>
             </Route>
             <Route exact path='/saved-movies'>
-                <button className="element__button element__save_active" onClick={click}></button>
+                <button className="element__button element__delete_active" onClick={click}></button>
             </Route>
             <img
                 className="element__image"

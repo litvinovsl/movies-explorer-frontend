@@ -82,7 +82,13 @@
     width: 21px;
     height: 21px;
     z-index: 4;
-
+}
+.element__delete_active{
+    background-image: url(../../images/save-but-del.svg);
+    border-color: transparent;
+    width: 21px;
+    height: 21px;
+    z-index: 2;
 }
 
 .element__save_active:hover{

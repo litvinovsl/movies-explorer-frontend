@@ -38,9 +38,10 @@ function SearchForm() {
 				setMovies(filteredMovies);
 				//====== checkbox FILTER ======================
 				let fullFiltered = [];
+				console.log(shortFilmsFilter);
 				if (shortFilmsFilter) {
 					fullFiltered = filterByDuration(filteredMovies);
-					// setMovies(filteredMovies);
+					setMovies(fullFiltered);
 					// setAllInitilMovies(filteredMovies);
 
 				} else {
