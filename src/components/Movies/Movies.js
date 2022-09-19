@@ -48,14 +48,14 @@ function Movies({ loggedIn }) {
         let moviesWithLike = [];
         moviesWithLike = [...movies];
         moviesWithLike = moviesWithLike.map((item) => {
-			return {
-				...item,
-				isLiked: savedMovies.some((savedMovie) => {
-					return item.movieId === savedMovie.movieId;
-				}),
-			};
-		});
-        
+            return {
+                ...item,
+                isLiked: savedMovies.some((savedMovie) => {
+                    return item.movieId === savedMovie.movieId;
+                }),
+            };
+        });
+
         setMoviesWithLikeState(moviesWithLike);
         // console.log(moviesWithLike);
     }, [movies, savedMovies, setMoviesWithLikeState, shortFilmsFilter])
@@ -64,12 +64,16 @@ function Movies({ loggedIn }) {
         <main className='movies'>
             <SearchForm />
             {isPreloader ? (
-				<Preloader />
-			) : movies.length ? (
-				<MoviesCardList />
-			) : null}
-            {/* <MoviesCardList /> */}
-            <MoreMovies />
+                <Preloader />
+            ) : movies.length ? (
+                <>
+                    <MoviesCardList />
+                    <MoreMovies />
+                </>
+            ) : 
+            <div className="movies__not-found">
+                <p className="movies__not-found-text">По вашему запросу фильмы не обнаружены, попробуйте поискать что-то другое</p>
+            </div>}
         </main>
     );
 }
