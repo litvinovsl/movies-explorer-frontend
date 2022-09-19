@@ -20,6 +20,8 @@ function App() {
   const [currentUser, setСurrentUser] = useState({});
   //===================================================
   const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMoviesWithFilter, setSavedMoviesWithFilter] = useState([]);
+
   const [isLikedMovie, setIsLikedMovie] = useState(false);
   const [isDelLikedMovie, setIsDelLikedMovie] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -44,6 +46,7 @@ function App() {
           .getMovies(token)
           .then((data) => {
             setSavedMovies(data);
+            setSavedMoviesWithFilter(data)
           })
           .catch((err) => {
             console.log(err)
@@ -158,7 +161,9 @@ function App() {
         isLikedMovie, 
         setIsLikedMovie,
         isDelLikedMovie, 
-        setIsDelLikedMovie
+        setIsDelLikedMovie,
+        savedMoviesWithFilter, 
+        setSavedMoviesWithFilter
       }}>
       <div>
         <Switch>
