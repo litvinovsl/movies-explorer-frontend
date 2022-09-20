@@ -30,6 +30,8 @@ function App() {
   const [savedMoviesFilterValue, setSavedMoviesFilterValue] = useState('');
   const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
   const [isPreloader, setIsPreloader] = useState(false);
+  // const [isFiltered, setIsFiltered] = useState(false);
+
   const [moviesWithLikeState, setMoviesWithLikeState] = useState([]);
   
 
@@ -163,7 +165,8 @@ function App() {
         isDelLikedMovie, 
         setIsDelLikedMovie,
         savedMoviesWithFilter, 
-        setSavedMoviesWithFilter
+        setSavedMoviesWithFilter,
+        // isFiltered, setIsFiltered
       }}>
       <div>
         <Switch>

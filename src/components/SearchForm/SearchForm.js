@@ -21,8 +21,10 @@ function SearchForm() {
 		savedMovies,
 		savedMoviesFilterValue,
 		setSavedMovies,
-		savedMoviesWithFilter, 
-        setSavedMoviesWithFilter
+		savedMoviesWithFilter,
+		setSavedMoviesWithFilter,
+		// isFiltered, 
+		// setIsFiltered
 	} = context;
 
 	const handleMoviesSearchClick = (e) => {
@@ -86,38 +88,45 @@ function SearchForm() {
 	};
 
 	const getAndFilterSavedMovies = () => {
-		// console.log(savedMovies)
-		// setSavedMoviesWithFilter(savedMovies);
-		let filteredSavedMovies = filterByKeyWord(savedMoviesWithFilter, savedMoviesFilterValue);
+		setSavedMoviesWithFilter(savedMovies);
+		// console.log('filter', savedMoviesWithFilter);
+		// console.log('saved ', savedMovies);
+		let filteredSavedMovies = filterByKeyWord(savedMovies, savedMoviesFilterValue);
 		let fullFiltered = [];
-		// // console.log(shortFilmsFilter);
 
-		// let savedMovieWithDuration = savedMoviesWithFilter;
-		// savedMovieWithDuration = savedMovieWithDuration.map((movie) => {
-		// 	let minutes = movie.duration.split(' ');
-		// 	minutes[0] = parseInt(minutes[0].match(/\d+/));
-		// 	minutes[1] = parseInt(minutes[1].match(/\d+/));
-		// 	let durationNumber = minutes[0] * 60 + minutes[1];
-		// 	movie.duration = durationNumber
-		// 	return movie
-		// })
+		// console.log(savedMoviesFilterValue.length > 0 && shortFilmsFilter);
+
+		let savedMovieWithDuration = savedMoviesFilterValue.length > 0 && shortFilmsFilter ? filteredSavedMovies : savedMovies;
+		savedMovieWithDuration = savedMovieWithDuration.map((movie) => {
+			if (typeof movie.duration === 'string') {
+				let minutes = movie.duration.split(' ');
+				minutes[0] = parseInt(minutes[0].match(/\d+/));
+				minutes[1] = parseInt(minutes[1].match(/\d+/));
+				let durationNumber = minutes[0] * 60 + minutes[1];
+				movie.duration = durationNumber
+				return movie
+			}
+			return movie
+		})
 
 		if (savedMoviesFilterValue.length > 0) {
-			console.log('length')
+			// console.log('length')
 			setSavedMoviesWithFilter(filteredSavedMovies);
 			// console.log(shortFilmsFilter);
-		} if (shortFilmsFilter){
-			console.log('short')
-			fullFiltered = filterByDuration(savedMovies);
+		} if (shortFilmsFilter) {
+			// console.log('short')
+			// console.log('short filteredSavedMovies ',filteredSavedMovies)
+			// console.log('short obj ',savedMovieWithDuration)
+			// fullFiltered = filterByDuration(savedMovieWithDuration);
+
 			setSavedMoviesWithFilter(fullFiltered);
 		} if (!shortFilmsFilter && savedMoviesFilterValue.length === 0) {
-			console.log('else')
+			// console.log('else')
 			setSavedMoviesWithFilter(savedMovies);
 		}
-		console.log('filter',savedMoviesWithFilter);
-		console.log( 'saved ',savedMovies);
 
-		
+
+
 		// console.log('savedMovies ',savedMovies);
 		// console.log('savedMovieWithDuration ',savedMovieWithDuration);
 
