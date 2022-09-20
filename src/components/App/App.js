@@ -1,4 +1,4 @@
-import { useState, useEffect, useNavigate, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
@@ -41,6 +41,7 @@ function App() {
 
   useEffect(() => {
     checkToken();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

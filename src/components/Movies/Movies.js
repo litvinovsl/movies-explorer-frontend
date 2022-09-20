@@ -1,14 +1,12 @@
-import { useEffect, useContext, useCallback, useState } from "react";
+import { useEffect, useContext, useCallback } from "react";
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import MoreMovies from '../MoreMovies/MoreMovies';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
-import { handleDuration } from '../../utils/utils';
 
-
-function Movies({ loggedIn }) {
+function Movies() {
     const context = useContext(CurrentUserContext);
     const {
         movies,
@@ -22,11 +20,9 @@ function Movies({ loggedIn }) {
     } = context;
 
     const getSavedSearchResults = useCallback(() => {
-        // console.log('тут');
         const savedSearchResult = JSON.parse(localStorage.getItem('movies'));
         const savedInputValue = localStorage.getItem('moviesInputValue');
         const savedCheckboxValue = JSON.parse(localStorage.getItem('shortFilmsCheckboxValue'));
-        // console.log('tyt savedCheckboxValue ', savedCheckboxValue);
         if (savedSearchResult) {
             setMovies(savedSearchResult);
         }
@@ -36,10 +32,7 @@ function Movies({ loggedIn }) {
         if (savedInputValue){
             setMoviesFilterValue(savedInputValue);
         }
-    }, [setMovies]);
-
-    // console.log('preload: ', isPreloader);
-
+    }, [setMovies, setShortFilmsFilter, setMoviesFilterValue]);
 
     useEffect(() => {
         getSavedSearchResults();
@@ -58,7 +51,6 @@ function Movies({ loggedIn }) {
         });
 
         setMoviesWithLikeState(moviesWithLike);
-        // console.log(moviesWithLike);
     }, [movies, savedMovies, setMoviesWithLikeState, shortFilmsFilter])
 
     return (

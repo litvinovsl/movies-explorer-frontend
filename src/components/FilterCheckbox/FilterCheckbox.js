@@ -20,8 +20,6 @@ function FilterCheckbox() {
         setShortSavedFilmsFilter(!shortSavedFilmsFilter)
     }
 
-    const checkboxClass = `${!shortFilmsFilter ? "filter__checkbox" : "filter__checkbox filter__checkbox_action"}`;
-
     return (
         <div className='filter'>
             <Route exact path='/movies'>
