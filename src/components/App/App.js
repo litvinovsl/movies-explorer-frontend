@@ -29,6 +29,7 @@ function App() {
   const [moviesFilterValue, setMoviesFilterValue] = useState('');
   const [savedMoviesFilterValue, setSavedMoviesFilterValue] = useState('');
   const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
+  const [shortSavedFilmsFilter, setShortSavedFilmsFilter] = useState(false);
   const [isPreloader, setIsPreloader] = useState(false);
   // const [isFiltered, setIsFiltered] = useState(false);
 
@@ -152,6 +153,8 @@ function App() {
         setMoviesFilterValue,
         shortFilmsFilter,
         setShortFilmsFilter,
+        shortSavedFilmsFilter, 
+        setShortSavedFilmsFilter,
         isPreloader,
         setIsPreloader,
         allInitilMovies,

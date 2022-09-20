@@ -15,16 +15,13 @@ function SearchForm() {
 		moviesFilterValue,
 		setMovies,
 		shortFilmsFilter,
+		shortSavedFilmsFilter,
 		setIsPreloader,
 		setSavedMoviesFilterValue,
 		setAllInitilMovies,
 		savedMovies,
 		savedMoviesFilterValue,
-		setSavedMovies,
-		savedMoviesWithFilter,
 		setSavedMoviesWithFilter,
-		// isFiltered, 
-		// setIsFiltered
 	} = context;
 
 	const handleMoviesSearchClick = (e) => {
@@ -37,31 +34,21 @@ function SearchForm() {
 		moviesApi
 			.getMovies()
 			.then((data) => {
-				// console.log('isPreloader', isPreloader);
 				data = handleMovies(data);
-				// console.log(allInitilMovies);
 				let filteredMovies = filterByKeyWord(data, moviesFilterValue);
 				setAllInitilMovies(data);
 				setMovies(filteredMovies);
-				//====== checkbox FILTER ======================
 				let fullFiltered = [];
-				// console.log(shortFilmsFilter);
 				if (shortFilmsFilter) {
 					fullFiltered = filterByDuration(filteredMovies);
 					setMovies(fullFiltered);
-					// setAllInitilMovies(filteredMovies);
-
 				} else {
-					// setMovies(filteredMovies);
 					fullFiltered = filteredMovies;
 				}
 				if (fullFiltered.length) {
 					localStorage.setItem('movies', JSON.stringify(fullFiltered));
-					// localStorage.setItem('initialMovies', JSON.stringify(allInitilMovies));
-					// console.log('setMovies ARR', localStorage.getItem('movies'));
-
-					// localStorage.setItem('shortFilmsCheckboxValue', shortFilmsFilter);
-					// localStorage.setItem('moviesInputValue', moviesFilterValue);
+					localStorage.setItem('shortFilmsCheckboxValue', shortFilmsFilter);
+					localStorage.setItem('moviesInputValue', moviesFilterValue);
 				}
 			})
 			.catch((err) => {
@@ -69,7 +56,6 @@ function SearchForm() {
 			})
 			.finally(() => {
 				setIsPreloader(false);
-				// console.log('isPreloader-fin', isPreloader);
 			});
 	};
 
@@ -77,9 +63,7 @@ function SearchForm() {
 		setMoviesFilterValue(e.target.value);
 	};
 
-
-	//=======================================================================
-
+	//==============================for saved-movies=========================================
 
 	const handleSavedMoviesSearchClick = (e) => {
 		e.preventDefault();
@@ -89,14 +73,9 @@ function SearchForm() {
 
 	const getAndFilterSavedMovies = () => {
 		setSavedMoviesWithFilter(savedMovies);
-		// console.log('filter', savedMoviesWithFilter);
-		// console.log('saved ', savedMovies);
 		let filteredSavedMovies = filterByKeyWord(savedMovies, savedMoviesFilterValue);
 		let fullFiltered = [];
-
-		// console.log(savedMoviesFilterValue.length > 0 && shortFilmsFilter);
-
-		let savedMovieWithDuration = savedMoviesFilterValue.length > 0 && shortFilmsFilter ? filteredSavedMovies : savedMovies;
+		let savedMovieWithDuration = savedMoviesFilterValue.length > 0 && shortSavedFilmsFilter ? filteredSavedMovies : savedMovies;
 		savedMovieWithDuration = savedMovieWithDuration.map((movie) => {
 			if (typeof movie.duration === 'string') {
 				let minutes = movie.duration.split(' ');
@@ -112,42 +91,15 @@ function SearchForm() {
 		if (savedMoviesFilterValue.length > 0) {
 			// console.log('length')
 			setSavedMoviesWithFilter(filteredSavedMovies);
-			// console.log(shortFilmsFilter);
-		} if (shortFilmsFilter) {
+		} if (shortSavedFilmsFilter) {
 			// console.log('short')
-			// console.log('short filteredSavedMovies ',filteredSavedMovies)
-			// console.log('short obj ',savedMovieWithDuration)
-			// fullFiltered = filterByDuration(savedMovieWithDuration);
-
+			fullFiltered = filterByDuration(savedMovieWithDuration);
 			setSavedMoviesWithFilter(fullFiltered);
-		} if (!shortFilmsFilter && savedMoviesFilterValue.length === 0) {
+		} if (!shortSavedFilmsFilter && savedMoviesFilterValue.length === 0) {
 			// console.log('else')
 			setSavedMoviesWithFilter(savedMovies);
 		}
-
-
-
-		// console.log('savedMovies ',savedMovies);
-		// console.log('savedMovieWithDuration ',savedMovieWithDuration);
-
-
-		// const string = '1ч 20м';
-		// let arr = string.split(' ');
-		// arr[0] = parseInt(arr[0].match(/\d+/));
-		// arr[1] = parseInt(arr[1].match(/\d+/));
-		// let minute = arr[0] * 60 + arr[1];
-		// console.log('string= ', string, ', num= ',minute);
-
-		// if (shortFilmsFilter) {
-		// 	setSavedMovies(filterByDuration(savedMovies));
-		// 	// setSavedMovies(fullFiltered);
-		// 	// setAllInitilMovies(filteredMovies);
-
-		// } 
-
-
 		setIsPreloader(false);
-
 	};
 
 	const handleSavedMoviesInputChange = (e) => {
@@ -168,6 +120,7 @@ function SearchForm() {
 						<input
 							className='search-form__input'
 							type='text'
+							defaultValue={moviesFilterValue || ''}
 							onChange={handleMoviesInputChange}
 							id='movie-input'
 							placeholder='Фильм'
@@ -188,6 +141,7 @@ function SearchForm() {
 						<input
 							className='search-form__input'
 							type='text'
+							defaultValue={savedMoviesFilterValue || ''}
 							onChange={handleSavedMoviesInputChange}
 							id='movie-input'
 							placeholder='Фильм'

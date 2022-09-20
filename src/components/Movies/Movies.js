@@ -16,24 +16,25 @@ function Movies({ loggedIn }) {
         isPreloader,
         savedMovies,
         setMoviesWithLikeState,
-        shortFilmsFilter
+        shortFilmsFilter,
+        setMoviesFilterValue,
+        setShortFilmsFilter
     } = context;
-
-    const [mySearchMovie, setMySerchMovie] = useState([]);
-    // console.log('mySearchMovie: ',mySearchMovie);
-
-
-    // console.log('фильмы в мовиес ',movies);
 
     const getSavedSearchResults = useCallback(() => {
         // console.log('тут');
         const savedSearchResult = JSON.parse(localStorage.getItem('movies'));
-        // console.log('тут ARR', localStorage.getItem('movies'));
-
+        const savedInputValue = localStorage.getItem('moviesInputValue');
+        const savedCheckboxValue = JSON.parse(localStorage.getItem('shortFilmsCheckboxValue'));
+        // console.log('tyt savedCheckboxValue ', savedCheckboxValue);
         if (savedSearchResult) {
             setMovies(savedSearchResult);
-            // setMoviesWithLikeState(savedSearchResult);
-
+        }
+        if (savedCheckboxValue) {
+            setShortFilmsFilter(savedCheckboxValue)
+        }
+        if (savedInputValue){
+            setMoviesFilterValue(savedInputValue);
         }
     }, [setMovies]);
 
