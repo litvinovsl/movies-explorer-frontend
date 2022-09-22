@@ -3,7 +3,6 @@ import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
-import MoreMovies from '../MoreMovies/MoreMovies';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function Movies() {
@@ -61,7 +60,6 @@ function Movies() {
             ) : movies.length ? (
                 <>
                     <MoviesCardList />
-                    <MoreMovies />
                 </>
             ) : 
             <div className="movies__not-found">
