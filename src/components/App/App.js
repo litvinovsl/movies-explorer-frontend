@@ -103,7 +103,7 @@ function App() {
       validToken(token)
         .then((res) => {
             setLoggedIn(true);
-            history.push('/saved-movies');
+            history.push('/movies');
         })
         .then(() => {
           api
