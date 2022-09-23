@@ -25,6 +25,9 @@ function SearchForm() {
 	} = context;
 	const handleMoviesSearchClick = (e) => {
 		e.preventDefault();
+		if (moviesFilterValue === ''){
+			return
+		}
 		setIsPreloader(true);
 		getAndFilterMovies();
 	};

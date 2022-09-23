@@ -4,6 +4,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
+import { Route } from "react-router-dom";
 
 function Movies() {
     const context = useContext(CurrentUserContext);
@@ -16,6 +17,7 @@ function Movies() {
         shortFilmsFilter,
         setMoviesFilterValue,
         setShortFilmsFilter,
+        savedMoviesWithFilter
     } = context;
 
     const getSavedSearchResults = useCallback(() => {
@@ -28,7 +30,7 @@ function Movies() {
         if (savedCheckboxValue) {
             setShortFilmsFilter(savedCheckboxValue)
         }
-        if (savedInputValue){
+        if (savedInputValue) {
             setMoviesFilterValue(savedInputValue);
         }
     }, [setMovies, setShortFilmsFilter, setMoviesFilterValue]);
@@ -36,6 +38,8 @@ function Movies() {
     useEffect(() => {
         getSavedSearchResults();
     }, [getSavedSearchResults]);
+    // console.log('savedMoviesWithFilter')
+
 
     useEffect(() => {
         let moviesWithLike = [];
@@ -55,16 +59,28 @@ function Movies() {
     return (
         <main className='movies'>
             <SearchForm />
-            {isPreloader ? (
-                <Preloader />
-            ) : movies.length ? (
-                <>
-                    <MoviesCardList />
-                </>
-            ) : 
-            <div className="movies__not-found">
-                <p className="movies__not-found-text">По вашему запросу фильмы не обнаружены, попробуйте поискать что-то другое</p>
-            </div>}
+            <Route exact path='/movies'>
+                {isPreloader ? (
+                    <Preloader />
+                ) : movies.length ? (
+                    <>
+                        <MoviesCardList />
+                    </>
+                ) :
+                    <div className="movies__not-found">
+                        <p className="movies__not-found-text">По вашему запросу фильмов не обнаружено, попробуйте поискать еще.</p>
+                    </div>}
+            </Route>
+            <Route exact path='/saved-movies'>
+                {savedMoviesWithFilter.length ? (
+                    <>
+                        <MoviesCardList />
+                    </>
+                ) :
+                    <div className="movies__not-found">
+                        <p className="movies__not-found-text">У вас нет сохраненных фильмов.</p>
+                    </div>}
+            </Route>
         </main>
     );
 }

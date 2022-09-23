@@ -6,19 +6,17 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import api from "../../utils/Api";
 import NotFound from "../NotFound/NotFound";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
-
 import { register, login, validToken } from "../../utils/auth";
 
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [currentUser, setСurrentUser] = useState({});
-  //===================================================
   const [savedMovies, setSavedMovies] = useState([]);
   const [savedMoviesWithFilter, setSavedMoviesWithFilter] = useState([]);
   const [isLikedMovie, setIsLikedMovie] = useState(false);
@@ -31,10 +29,9 @@ function App() {
   const [shortSavedFilmsFilter, setShortSavedFilmsFilter] = useState(false);
   const [isPreloader, setIsPreloader] = useState(false);
   const [moviesWithLikeState, setMoviesWithLikeState] = useState([]);
-  
-
 
   const history = useHistory();
+  const location = useLocation();
 
   useEffect(() => {
     checkToken();
@@ -47,7 +44,7 @@ function App() {
           .getMovies(token)
           .then((data) => {
             setSavedMovies(data);
-            setSavedMoviesWithFilter(data)
+            setSavedMoviesWithFilter(data);
           })
           .catch((err) => {
             console.log(err)
@@ -100,7 +97,7 @@ function App() {
       validToken(token)
         .then((res) => {
             setLoggedIn(true);
-            history.push('/movies');
+            history.push(location.pathname);
         })
         .then(() => {
           api
