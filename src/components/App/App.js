@@ -21,7 +21,6 @@ function App() {
   //===================================================
   const [savedMovies, setSavedMovies] = useState([]);
   const [savedMoviesWithFilter, setSavedMoviesWithFilter] = useState([]);
-
   const [isLikedMovie, setIsLikedMovie] = useState(false);
   const [isDelLikedMovie, setIsDelLikedMovie] = useState(false);
   const [movies, setMovies] = useState([]);
@@ -31,8 +30,6 @@ function App() {
   const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
   const [shortSavedFilmsFilter, setShortSavedFilmsFilter] = useState(false);
   const [isPreloader, setIsPreloader] = useState(false);
-  // const [isFiltered, setIsFiltered] = useState(false);
-
   const [moviesWithLikeState, setMoviesWithLikeState] = useState([]);
   
 
@@ -124,6 +121,11 @@ function App() {
   function logoutProfile() {
     console.log('bye')
     localStorage.removeItem('jwt');
+    localStorage.removeItem('movies');
+    localStorage.removeItem('moviesInputValue');
+    localStorage.removeItem('shortFilmsCheckboxValue');
+
+
     history.push('/');
     setLoggedIn(false);
   }
@@ -170,7 +172,6 @@ function App() {
         setIsDelLikedMovie,
         savedMoviesWithFilter, 
         setSavedMoviesWithFilter,
-        // isFiltered, setIsFiltered
       }}>
       <div>
         <Switch>

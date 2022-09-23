@@ -15,7 +15,7 @@ function Movies() {
         setMoviesWithLikeState,
         shortFilmsFilter,
         setMoviesFilterValue,
-        setShortFilmsFilter
+        setShortFilmsFilter,
     } = context;
 
     const getSavedSearchResults = useCallback(() => {

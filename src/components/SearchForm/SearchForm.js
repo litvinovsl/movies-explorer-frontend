@@ -23,7 +23,6 @@ function SearchForm() {
 		savedMoviesFilterValue,
 		setSavedMoviesWithFilter,
 	} = context;
-
 	const handleMoviesSearchClick = (e) => {
 		e.preventDefault();
 		setIsPreloader(true);
@@ -60,7 +59,11 @@ function SearchForm() {
 	};
 
 	const handleMoviesInputChange = (e) => {
-		setMoviesFilterValue(e.target.value);
+		console.log(e.target.value === '')
+		if(e.target.value === ''){
+		} else {
+			setMoviesFilterValue(e.target.value);
+		}
 	};
 
 	//==============================for saved-movies=========================================
@@ -89,14 +92,11 @@ function SearchForm() {
 		})
 
 		if (savedMoviesFilterValue.length > 0) {
-			// console.log('length')
 			setSavedMoviesWithFilter(filteredSavedMovies);
 		} if (shortSavedFilmsFilter) {
-			// console.log('short')
 			fullFiltered = filterByDuration(savedMovieWithDuration);
 			setSavedMoviesWithFilter(fullFiltered);
 		} if (!shortSavedFilmsFilter && savedMoviesFilterValue.length === 0) {
-			// console.log('else')
 			setSavedMoviesWithFilter(savedMovies);
 		}
 		setIsPreloader(false);

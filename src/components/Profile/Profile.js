@@ -12,8 +12,6 @@ function Profile({ logoutProfile, onUpdateUser }) {
         setСurrentUser,
     } = context;
 
-    console.log(currentUser);
-
     useEffect(() => {
         setName(currentUser.name);
         setEmail(currentUser.email);
@@ -21,8 +19,6 @@ function Profile({ logoutProfile, onUpdateUser }) {
 
     function handleChangeName(e) {
         setName(e.target.value);
-        console.log(e.target.value);
-        console.log('name ', name)
     }
     function handleChangeEmail(e) {
         setEmail(e.target.value);
