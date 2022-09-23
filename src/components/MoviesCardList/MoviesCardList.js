@@ -7,7 +7,7 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function MoviesCardList() {
     const context = useContext(CurrentUserContext);
-    const { moviesWithLikeState, savedMovies, savedMoviesWithFilter } = context;
+    const { moviesWithLikeState, savedMoviesWithFilter } = context;
     const [renderedMovieQuantity, setRenderedMovieQuantity] = useState(null);
     const [renderedMovieCards, setRenderedMovieCards] = useState([]);
     const [moreButtonVisible, setMoreButtonVisible] = useState(true);
@@ -39,19 +39,15 @@ function MoviesCardList() {
     const cardDisplay = useCallback(() => {
         if (widthSize > 1279) {
             setRenderedMovieQuantity(12);
-            // if()
             setAddedMovies(3);
-            // console.log('setRenderedMovieQuantity(12);', renderedMovieQuantity)
         }
         else if (widthSize > 783) {
             setRenderedMovieQuantity(8);
             setAddedMovies(2);
-            // console.log('setRenderedMovieQuantity(8);',renderedMovieQuantity)
         }
         else if (widthSize <= 783) {
             setRenderedMovieQuantity(5);
             setAddedMovies(1);
-            // console.log('setRenderedMovieQuantity(5);',renderedMovieQuantity)
         }
     }, [widthSize])
 
@@ -66,31 +62,15 @@ function MoviesCardList() {
         } else {
             setMoreButtonVisible(true);
         }
-        console.log('moviesWithLikeState.length: ', moviesWithLikeState.length);
-        console.log('renderedMovieQuantity: ', renderedMovieQuantity);
-        // console.log('moreBatton: ', renderedMovieCards.length  <= renderedMovieQuantity);
-        // console.log('allmovies: ', moviesWithLikeState);
     }, [moviesWithLikeState, renderedMovieQuantity, setRenderedMovieCards]);
 
     function handleMoreMoviesClick() {
         if (renderedMovieCards.length < moviesWithLikeState.length){
-            console.log('more');
             setRenderedMovieQuantity(renderedMovieQuantity + addedMovies);
         } else if (renderedMovieCards.length  === moviesWithLikeState.length) {
-            console.log('net filmov')
             setMoreButtonVisible(false);
         }
     }
-
-
-
-
-    // console.log('asdadadad', savedMovies)
-    // const [handleScreenResize, setHandleScreenResize] = React.useState();
-    //  window.addEventListener('resize', handleScreenResize);
-    // console.log(handleScreenResize);
-
-
 
     return (
 <>
