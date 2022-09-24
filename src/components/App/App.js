@@ -41,14 +41,14 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('jwt');
     api
-          .getMovies(token)
-          .then((data) => {
-            setSavedMovies(data);
-            setSavedMoviesWithFilter(data);
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+      .getMovies(token)
+      .then((data) => {
+        setSavedMovies(data);
+        setSavedMoviesWithFilter(data);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }, [isLikedMovie, setIsLikedMovie, isDelLikedMovie, setIsDelLikedMovie, loggedIn]);
 
 
@@ -96,18 +96,18 @@ function App() {
     if (token) {
       validToken(token)
         .then((res) => {
-            setLoggedIn(true);
-            history.push(location.pathname);
+          setLoggedIn(true);
+          history.push(location.pathname);
         })
         .then(() => {
           api
-          .getMovies(token)
-          .then((data) => {
-            setSavedMovies(data);
-          })
-          .catch((err) => {
-            console.log(err)
-          })
+            .getMovies(token)
+            .then((data) => {
+              setSavedMovies(data);
+            })
+            .catch((err) => {
+              console.log(err)
+            })
         })
         .catch((err) => {
           console.log(err);
@@ -135,7 +135,8 @@ function App() {
       });
   }
 
-  
+  console.log(loggedIn);
+
 
 
   //===============================================//
@@ -153,21 +154,21 @@ function App() {
         setMoviesFilterValue,
         shortFilmsFilter,
         setShortFilmsFilter,
-        shortSavedFilmsFilter, 
+        shortSavedFilmsFilter,
         setShortSavedFilmsFilter,
         isPreloader,
         setIsPreloader,
         allInitilMovies,
         setAllInitilMovies,
-        savedMovies, 
+        savedMovies,
         setSavedMovies,
-        moviesWithLikeState, 
+        moviesWithLikeState,
         setMoviesWithLikeState,
-        isLikedMovie, 
+        isLikedMovie,
         setIsLikedMovie,
-        isDelLikedMovie, 
+        isDelLikedMovie,
         setIsDelLikedMovie,
-        savedMoviesWithFilter, 
+        savedMoviesWithFilter,
         setSavedMoviesWithFilter,
       }}>
       <div>
@@ -181,8 +182,7 @@ function App() {
               onLogin={onLogin} />
           </Route>
           <Route exact path="/">
-            <Header
-              class='header_main' />
+            <Header class='header_main' loggedIn={loggedIn} />
             <Main />
             <Footer />
           </Route>
