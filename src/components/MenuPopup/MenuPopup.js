@@ -1,7 +1,6 @@
 import React from 'react';
 import './MenuPopup.css';
 import { Route } from "react-router-dom";
-
 import MenuLink from '../MenuLink/MenuLink';
 import ProfileButton from '../ProfileButton/ProfileButton';
 

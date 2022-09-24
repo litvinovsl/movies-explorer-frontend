@@ -38,8 +38,6 @@ function Movies() {
     useEffect(() => {
         getSavedSearchResults();
     }, [getSavedSearchResults]);
-    // console.log('savedMoviesWithFilter')
-
 
     useEffect(() => {
         let moviesWithLike = [];

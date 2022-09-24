@@ -14,23 +14,18 @@ function Register({ onRegister }) {
 
     function handleEmailChange(evt) {
         setEmail(evt.target.value);
-        console.log('email: ', email);
     }
 
     function handlePasswordChange(evt) {
         setPassword(evt.target.value);
-        console.log('pass: ', password);
     }
 
     function handleNameChange(evt) {
         setName(evt.target.value);
-        console.log('name: ', name);
     }
-
 
     function handleSubmit(evt) {
         evt.preventDefault();
-        console.log("email: ", email, "pass:", password)
         onRegister(email, password, name);
     }
 

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Route } from 'react-router-dom';
 import './MoviesCard.css';
-import api from '../../utils/Api';
+import api from '../../utils/MainApi';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function MoviesCard({ movie }) {
@@ -15,17 +15,12 @@ function MoviesCard({ movie }) {
         setIsDelLikedMovie,
         isDelLikedMovie
     } = context;
-    // console.log(currentUser);
-    // const isOwn = movie.owner === currentUser._id;
-
-
 
     function click() {
         //меняем длительность обратно на number
         const savedMovie = movies.find((item) => {
             return movie.movieId === item.movieId;
         });
-        console.log('movie.isLiked: ', movie);
         if (movie.isLiked === false) {
             api.saveMovie(savedMovie)
                 .then((data) => {
@@ -39,8 +34,6 @@ function MoviesCard({ movie }) {
             const deletedMovie = savedMovies.find((item) => {
                 return movie.movieId === item.movieId;
             });
-            // console.log('savedMovies ', savedMovies);
-            // console.log('deletedMovie ', savedMovies);
             api
                 .deleteMovie(deletedMovie._id)
                 .then((data) => {

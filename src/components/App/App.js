@@ -8,12 +8,11 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import { Route, Switch, useHistory, useLocation } from "react-router-dom";
-import api from "../../utils/Api";
+import api from "../../utils/MainApi";
 import NotFound from "../NotFound/NotFound";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import { CurrentUserContext } from "../../context/CurrentUserContext";
 import { register, login, validToken } from "../../utils/auth";
-
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -32,8 +31,6 @@ function App() {
   const [moviesWithLikeState, setMoviesWithLikeState] = useState([]);
   const [isInfoTooltip, setIsInfoTooltip] = useState(false);
   const [infoTooltipMessage, setInfoTooltipMessage] = useState('');
-
-
 
   const history = useHistory();
   const location = useLocation();

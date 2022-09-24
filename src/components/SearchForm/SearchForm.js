@@ -62,8 +62,8 @@ function SearchForm() {
 	};
 
 	const handleMoviesInputChange = (e) => {
-		console.log(e.target.value === '')
 		if(e.target.value === ''){
+			return
 		} else {
 			setMoviesFilterValue(e.target.value);
 		}
