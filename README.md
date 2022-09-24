@@ -1,6 +1,6 @@
 # movies-explorer-frontend
 
-##Сайт рассположен на домене:
+##Сайт расположен на домене:
 
 https://movie.search.nomoredomains.sbs/
 

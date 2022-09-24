@@ -16,11 +16,6 @@ function Register({ onRegister }) {
         setEmail(evt.target.value);
     }
 
-    const regex = '/[\wа-яА-ЯЁё-\s]/gi';
-    ///^[A-Za-zа-яА-ЯёЁ0-9-\s]*$/
-    // const str = 'Сергей Литвинов_-123';
-    // console.log(str.match(regex).join(''));
-
     function handlePasswordChange(evt) {
         setPassword(evt.target.value);
     }
