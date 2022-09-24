@@ -20,6 +20,7 @@ function Header(props) {
     <section className={`header ${props.class}`}>
       <MenuPopup
         isOpen={isOpenMenu}
+        loggedIn={props.loggedIn}
         onClose={closeMenu} />
       <Link to="/" >
         <img className='header__logo' src={logo} alt='логотип сайта' />

@@ -12,16 +12,38 @@ function MenuPopup(props) {
       <div className="popup__container">
         <button className='popup__close' onClick={props.onClose} />
         <Route exact path='/'>
-          <nav className='popup__links'>
-            <MenuLink
-              text='Регистрация'
-              route='/signup'
-              class='nav-link_burger' />
-            <MenuLink
-              text='Войти'
-              route='/signin'
-              class='nav-link_burger' />
-          </nav>
+          {props.loggedIn ? (
+            <>
+              <nav className='popup__links'>
+                <MenuLink
+                  text='Фильмы'
+                  route='/movies'
+                  class='nav-link_burger'
+                  onClose={props.onClose} />
+                <MenuLink
+                  text='Сохраненные фильмы'
+                  route='/saved-movies'
+                  class='nav-link_burger'
+                  onClose={props.onClose} />
+              </nav>
+              <ProfileButton
+                onClose={props.onClose} />
+            </>
+          ) : (
+            <>
+              <nav className='popup__links'>
+                <MenuLink
+                  text='Регистрация'
+                  route='/signup'
+                  class='nav-link_burger' />
+                <MenuLink
+                  text='Войти'
+                  route='/signin'
+                  class='nav-link_burger' />
+              </nav>
+            </>
+          )}
+
         </Route>
         <Route exact path={['/movies', '/saved-movies', '/profile']}>
           <nav className='popup__links'>
