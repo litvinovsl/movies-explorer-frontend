@@ -6,6 +6,7 @@ import Main from "../Main/Main";
 import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import api from "../../utils/Api";
 import NotFound from "../NotFound/NotFound";
@@ -29,6 +30,10 @@ function App() {
   const [shortSavedFilmsFilter, setShortSavedFilmsFilter] = useState(false);
   const [isPreloader, setIsPreloader] = useState(false);
   const [moviesWithLikeState, setMoviesWithLikeState] = useState([]);
+  const [isInfoTooltip, setIsInfoTooltip] = useState(false);
+  const [infoTooltipMessage, setInfoTooltipMessage] = useState('');
+
+
 
   const history = useHistory();
   const location = useLocation();
@@ -73,7 +78,16 @@ function App() {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setIsInfoTooltip(true);
+        if (err === '409') {
+          setInfoTooltipMessage('E-mail занят.')
+        return
+        } if(err === '400') {
+          setInfoTooltipMessage('E-mail введен некорректно.')
+          return
+        } else {
+          setInfoTooltipMessage('Сервер не отвечает, попробуйте позже.')
+        }
       });
   }
 
@@ -87,6 +101,17 @@ function App() {
         }
       })
       .catch((err) => {
+        setIsInfoTooltip(true);
+        if (err === '401') {
+          setInfoTooltipMessage('Пароль или E-mail не верный.')
+        return
+        } if(err === '400') {
+          setInfoTooltipMessage('E-mail введен некорректно.')
+          return
+        } else {
+          console.log(err)
+          setInfoTooltipMessage('Сервер не отвечает, попробуйте позже.')
+        }
         console.log(err);
       });
   }
@@ -131,13 +156,21 @@ function App() {
       .updateUserInfo({ name, email })
       .then(() => { console.log('update') })
       .catch((err) => {
-        console.log(err);
+        setIsInfoTooltip(true);
+        if (err === '409 Conflict') {
+          setInfoTooltipMessage('E-mail занят.')
+        return
+        } if(err === '400 Bad Request') {
+          setInfoTooltipMessage('E-mail введен некорректно.')
+          return
+        } else {
+          setInfoTooltipMessage('Сервер не отвечает, попробуйте позже.')
+        }
       });
   }
-
-  console.log(loggedIn);
-
-
+  function handleCloseTooltip() {
+    setIsInfoTooltip(false);
+  }
 
   //===============================================//
 
@@ -215,6 +248,10 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
+        <InfoTooltip
+          isOpen={isInfoTooltip}
+          onClose={handleCloseTooltip}
+          message={infoTooltipMessage} />
       </div>
     </CurrentUserContext.Provider>
   );
