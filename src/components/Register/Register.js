@@ -16,6 +16,11 @@ function Register({ onRegister }) {
         setEmail(evt.target.value);
     }
 
+    const regex = '/[\wа-яА-ЯЁё-\s]/gi';
+    ///^[A-Za-zа-яА-ЯёЁ0-9-\s]*$/
+    // const str = 'Сергей Литвинов_-123';
+    // console.log(str.match(regex).join(''));
+
     function handlePasswordChange(evt) {
         setPassword(evt.target.value);
     }
@@ -46,7 +51,8 @@ function Register({ onRegister }) {
                     required
                     minLength={2}
                     maxLength={40}
-                    placeholder='Имя' />
+                    placeholder='Имя'
+                    pattern='[A-Za-zа-яА-ЯёЁ0-9-\s]{2,40}' />
                 <label htmlFor="register__email" className="register__label">E-mail</label>
                 <input
                     className='register__input'
@@ -57,7 +63,8 @@ function Register({ onRegister }) {
                     required
                     minLength={2}
                     maxLength={40}
-                    placeholder='E-mail' />
+                    placeholder='E-mail'
+                    pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' />
                 <label htmlFor="register__password" className="register__label">Пароль</label>
                 <input
                     className='register__input'
@@ -68,7 +75,9 @@ function Register({ onRegister }) {
                     required
                     minLength={2}
                     maxLength={40}
-                    placeholder='Пароль' />
+                    placeholder='Пароль'
+                    pattern="[\w]{2,40}$"
+                />
                 <button className='register__submit register__submit_reg' type='submit'>Зарегистрироваться</button>
             </form>
             <p className='register__signin'>Уже зарегистрированы?

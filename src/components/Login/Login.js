@@ -41,7 +41,8 @@ function Login({onLogin}) {
                     required
                     minLength={2}
                     maxLength={40}
-                    placeholder='E-mail' />
+                    placeholder='E-mail' 
+                    pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$' />
                 <label htmlFor="register__password" className="register__label">Пароль</label>
                 <input
                     className='register__input'
@@ -52,7 +53,8 @@ function Login({onLogin}) {
                     required
                     minLength={2}
                     maxLength={40}
-                    placeholder='Пароль' />
+                    placeholder='Пароль' 
+                    pattern="[\w]{2,40}$"/>
                 <button className='register__submit login__submit' type='submit'>Войти</button>
             </form>
             <p className='register__signin'>Ещё не зарегистрированы?

@@ -51,7 +51,9 @@ function Profile({ logoutProfile, onUpdateUser }) {
                         onChange={handleChangeName}
                         required
                         minLength={2}
-                        maxLength={40} />
+                        maxLength={40}
+                        pattern='[A-Za-zа-яА-ЯёЁ0-9-\s]{2,40}'
+                    />
                     <label htmlFor="profile__name" className="form__label form__label_name">Имя</label>
                     <input
                         className='profile__input'
@@ -62,7 +64,9 @@ function Profile({ logoutProfile, onUpdateUser }) {
                         onChange={handleChangeEmail}
                         required
                         minLength={2}
-                        maxLength={40} />
+                        maxLength={40}
+                        pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$'
+                    />
                     <label htmlFor="profile__email" className="form__label form__label_email">E-mail</label>
                 </div>
                 <button className='profile__button profile__button_submit' type='submit'>Редактировать</button>

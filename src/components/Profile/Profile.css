@@ -41,11 +41,21 @@
     color: #fff;
 }
 
+.profile__input:invalid{
+    border-bottom: #882b2b solid 1px;
+    color: #882b2b;
+}
+
 .profile__input:nth-last-child(2) {
     margin-bottom: 220px;
     padding-top: 17px;
     padding-bottom: 0;  
     border: none;
+}
+
+.profile__input:nth-last-child(2):invalid {
+    padding-bottom: 16px;
+    border-bottom: #882b2b solid 1px;
 }
 
 .form__label {

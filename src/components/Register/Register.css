@@ -41,6 +41,9 @@
     outline:none;
     color: #FFF;
 }
+.register__input:invalid{
+    color: #882b2b;
+}
 
 .register__submit{
     height: 45px;
