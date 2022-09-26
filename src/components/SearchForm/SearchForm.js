@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './SearchForm.css';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox'
 import searchIcon from '../../images/icon-search.svg';
@@ -109,9 +109,9 @@ function SearchForm() {
 		setSavedMoviesFilterValue(e.target.value);
 	};
 
-
 	return (
-		<Switch>
+		// <Switch>
+		<>
 			<Route path='/movies'>
 				<form
 					className='search-form'
@@ -158,7 +158,8 @@ function SearchForm() {
 					<FilterCheckbox />
 				</form>
 			</Route>
-		</Switch>
+			</>
+		// </Switch>
 	);
 }
 

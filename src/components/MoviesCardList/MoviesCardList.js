@@ -7,9 +7,9 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function MoviesCardList() {
     const context = useContext(CurrentUserContext);
-    const { moviesWithLikeState, savedMoviesWithFilter } = context;
+    const { moviesWithLikeState, savedMoviesWithFilter, renderedMovieCards, setRenderedMovieCards } = context;
     const [renderedMovieQuantity, setRenderedMovieQuantity] = useState(null);
-    const [renderedMovieCards, setRenderedMovieCards] = useState([]);
+    // const [renderedMovieCards, setRenderedMovieCards] = useState([]);
     const [moreButtonVisible, setMoreButtonVisible] = useState(true);
     const [addedMovies, setAddedMovies] = useState(null);
 

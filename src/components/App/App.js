@@ -24,6 +24,7 @@ function App() {
   const [movies, setMovies] = useState([]);
   const [allInitilMovies, setAllInitilMovies] = useState([]);
   const [moviesFilterValue, setMoviesFilterValue] = useState('');
+  const [renderedMovieCards, setRenderedMovieCards] = useState([]);
   const [savedMoviesFilterValue, setSavedMoviesFilterValue] = useState('');
   const [shortFilmsFilter, setShortFilmsFilter] = useState(false);
   const [shortSavedFilmsFilter, setShortSavedFilmsFilter] = useState(false);
@@ -61,11 +62,12 @@ function App() {
       .getUserInfo(token)
       .then((data) => {
         setСurrentUser(data.data);
+        console.log('я')
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   function onRegister(email, password, name) {
     register(password, email, name)
@@ -143,8 +145,11 @@ function App() {
     localStorage.removeItem('movies');
     localStorage.removeItem('moviesInputValue');
     localStorage.removeItem('shortFilmsCheckboxValue');
-
-
+    setMovies([]);
+    setMoviesFilterValue('');
+    setSavedMoviesFilterValue('');
+    setShortFilmsFilter(false);
+    setShortSavedFilmsFilter(false);
     history.push('/');
     setLoggedIn(false);
   }
@@ -200,6 +205,8 @@ function App() {
         setIsDelLikedMovie,
         savedMoviesWithFilter,
         setSavedMoviesWithFilter,
+        renderedMovieCards, 
+        setRenderedMovieCards
       }}>
       <div>
         <Switch>
