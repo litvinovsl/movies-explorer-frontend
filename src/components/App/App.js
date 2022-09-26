@@ -54,6 +54,13 @@ function App() {
       })
   }, [isLikedMovie, setIsLikedMovie, isDelLikedMovie, setIsDelLikedMovie, loggedIn]);
 
+  useEffect(() => {
+    setSavedMoviesFilterValue('');
+    setShortSavedFilmsFilter(false);
+    setSavedMoviesWithFilter(savedMovies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname])
+
 
   useEffect(() => {
     const token = localStorage.getItem('jwt');
@@ -62,7 +69,6 @@ function App() {
       .getUserInfo(token)
       .then((data) => {
         setСurrentUser(data.data);
-        console.log('я')
       })
       .catch((err) => {
         console.log(err);
@@ -80,8 +86,8 @@ function App() {
         setIsInfoTooltip(true);
         if (err === '409') {
           setInfoTooltipMessage('E-mail занят.')
-        return
-        } if(err === '400') {
+          return
+        } if (err === '400') {
           setInfoTooltipMessage('E-mail введен некорректно.')
           return
         } else {
@@ -103,8 +109,8 @@ function App() {
         setIsInfoTooltip(true);
         if (err === '401') {
           setInfoTooltipMessage('Пароль или E-mail не верный.')
-        return
-        } if(err === '400') {
+          return
+        } if (err === '400') {
           setInfoTooltipMessage('E-mail введен некорректно.')
           return
         } else {
@@ -161,8 +167,8 @@ function App() {
         setIsInfoTooltip(true);
         if (err === '409 Conflict') {
           setInfoTooltipMessage('E-mail занят.')
-        return
-        } if(err === '400 Bad Request') {
+          return
+        } if (err === '400 Bad Request') {
           setInfoTooltipMessage('E-mail введен некорректно.')
           return
         } else {
@@ -205,7 +211,7 @@ function App() {
         setIsDelLikedMovie,
         savedMoviesWithFilter,
         setSavedMoviesWithFilter,
-        renderedMovieCards, 
+        renderedMovieCards,
         setRenderedMovieCards
       }}>
       <div>

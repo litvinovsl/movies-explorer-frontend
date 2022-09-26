@@ -7,9 +7,11 @@ import { CurrentUserContext } from '../../context/CurrentUserContext';
 
 function MoviesCardList() {
     const context = useContext(CurrentUserContext);
-    const { moviesWithLikeState, savedMoviesWithFilter, renderedMovieCards, setRenderedMovieCards } = context;
+    const { moviesWithLikeState,
+        savedMoviesWithFilter,
+        renderedMovieCards,
+        setRenderedMovieCards, } = context;
     const [renderedMovieQuantity, setRenderedMovieQuantity] = useState(null);
-    // const [renderedMovieCards, setRenderedMovieCards] = useState([]);
     const [moreButtonVisible, setMoreButtonVisible] = useState(true);
     const [addedMovies, setAddedMovies] = useState(null);
 
@@ -57,7 +59,7 @@ function MoviesCardList() {
 
     useEffect(() => {
         setRenderedMovieCards(moviesWithLikeState.slice(0, renderedMovieQuantity));
-        if (moviesWithLikeState.length  <= renderedMovieQuantity){
+        if (moviesWithLikeState.length <= renderedMovieQuantity) {
             setMoreButtonVisible(false);
         } else {
             setMoreButtonVisible(true);
@@ -65,39 +67,39 @@ function MoviesCardList() {
     }, [moviesWithLikeState, renderedMovieQuantity, setRenderedMovieCards]);
 
     function handleMoreMoviesClick() {
-        if (renderedMovieCards.length < moviesWithLikeState.length){
+        if (renderedMovieCards.length < moviesWithLikeState.length) {
             setRenderedMovieQuantity(renderedMovieQuantity + addedMovies);
-        } else if (renderedMovieCards.length  === moviesWithLikeState.length) {
+        } else if (renderedMovieCards.length === moviesWithLikeState.length) {
             setMoreButtonVisible(false);
         }
     }
 
     return (
-<>
-        <section className="elements">
-            <Switch>
-                <Route path="/movies">
-                    {renderedMovieCards.map((movie) => {
-                        if (typeof movie.duration === 'number') {
-                            movie.duration = Math.trunc(movie.duration / 60) + 'ч ' + (movie.duration % 60) + 'м';
-                        }
-                        return <MoviesCard key={movie.movieId} movie={movie} />;
-                    })}
-                </Route>
-                <Route path="/saved-movies">
-                    {savedMoviesWithFilter.map((movie) => {
-                        if (typeof movie.duration === 'number') {
-                            movie.duration = Math.trunc(movie.duration / 60) + 'ч ' + (movie.duration % 60) + 'м';
-                        }
-                        return <MoviesCard key={movie._id} movie={movie} />;
-                    })}
-                </Route>
-            </Switch>
-        </section>
-        {moreButtonVisible ? <MoreMovies 
-        onClick={handleMoreMoviesClick}/> : ''}
-         </>
-        
+        <>
+            <section className="elements">
+                <Switch>
+                    <Route path="/movies">
+                        {renderedMovieCards.map((movie) => {
+                            if (typeof movie.duration === 'number') {
+                                movie.duration = Math.trunc(movie.duration / 60) + 'ч ' + (movie.duration % 60) + 'м';
+                            }
+                            return <MoviesCard key={movie.movieId} movie={movie} />;
+                        })}
+                    </Route>
+                    <Route path="/saved-movies">
+                        {savedMoviesWithFilter.map((movie) => {
+                            if (typeof movie.duration === 'number') {
+                                movie.duration = Math.trunc(movie.duration / 60) + 'ч ' + (movie.duration % 60) + 'м';
+                            }
+                            return <MoviesCard key={movie._id} movie={movie} />;
+                        })}
+                    </Route>
+                </Switch>
+            </section>
+            {moreButtonVisible ? <MoreMovies
+                onClick={handleMoreMoviesClick} /> : ''}
+        </>
+
     )
 };
 

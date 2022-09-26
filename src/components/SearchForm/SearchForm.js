@@ -25,7 +25,7 @@ function SearchForm() {
 	} = context;
 	const handleMoviesSearchClick = (e) => {
 		e.preventDefault();
-		if (moviesFilterValue === ''){
+		if (moviesFilterValue === '') {
 			return
 		}
 		setIsPreloader(true);
@@ -62,7 +62,7 @@ function SearchForm() {
 	};
 
 	const handleMoviesInputChange = (e) => {
-		if(e.target.value === ''){
+		if (e.target.value === '') {
 			return
 		} else {
 			setMoviesFilterValue(e.target.value);
@@ -158,7 +158,7 @@ function SearchForm() {
 					<FilterCheckbox />
 				</form>
 			</Route>
-			</>
+		</>
 		// </Switch>
 	);
 }
