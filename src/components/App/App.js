@@ -79,7 +79,7 @@ function App() {
     register(password, email, name)
       .then((res) => {
         if (res) {
-          history.push('/signin');
+          onLogin(email, password);
         }
       })
       .catch((err) => {
