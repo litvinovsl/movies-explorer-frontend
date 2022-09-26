@@ -32,6 +32,7 @@ function App() {
   const [moviesWithLikeState, setMoviesWithLikeState] = useState([]);
   const [isInfoTooltip, setIsInfoTooltip] = useState(false);
   const [infoTooltipMessage, setInfoTooltipMessage] = useState('');
+  const [isGoodInfoTooltip, setIsGoodInfoTooltip] = useState(false);
 
   const history = useHistory();
   const location = useLocation();
@@ -50,7 +51,7 @@ function App() {
         setSavedMoviesWithFilter(data);
       })
       .catch((err) => {
-        console.log(err)
+        // console.log(err)
       })
   }, [isLikedMovie, setIsLikedMovie, isDelLikedMovie, setIsDelLikedMovie, loggedIn]);
 
@@ -71,7 +72,7 @@ function App() {
         setСurrentUser(data.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, [loggedIn]);
 
@@ -84,6 +85,7 @@ function App() {
       })
       .catch((err) => {
         setIsInfoTooltip(true);
+        setIsGoodInfoTooltip(false);
         if (err === '409') {
           setInfoTooltipMessage('E-mail занят.')
           return
@@ -100,6 +102,9 @@ function App() {
     login(password, email)
       .then((res) => {
         setLoggedIn(true);
+        setIsInfoTooltip(true);
+        setIsGoodInfoTooltip(true);
+        setInfoTooltipMessage(`Добро пожаловать!`);
         if (res) {
           history.push('/movies');
           localStorage.setItem('jwt', res.token);
@@ -107,6 +112,7 @@ function App() {
       })
       .catch((err) => {
         setIsInfoTooltip(true);
+        setIsGoodInfoTooltip(false);
         if (err === '401') {
           setInfoTooltipMessage('Пароль или E-mail не верный.')
           return
@@ -162,9 +168,14 @@ function App() {
   function handleUpdateUser({ name, email }) {
     api
       .updateUserInfo({ name, email })
-      .then(() => { console.log('update') })
+      .then(() => {
+        setIsInfoTooltip(true);
+        setIsGoodInfoTooltip(true);
+        setInfoTooltipMessage('Профиль успешно обновлен.')
+      })
       .catch((err) => {
         setIsInfoTooltip(true);
+        setIsGoodInfoTooltip(false);
         if (err === '409 Conflict') {
           setInfoTooltipMessage('E-mail занят.')
           return
@@ -174,6 +185,7 @@ function App() {
         } else {
           setInfoTooltipMessage('Сервер не отвечает, попробуйте позже.')
         }
+        console.log(err)
       });
   }
   function handleCloseTooltip() {
@@ -261,7 +273,8 @@ function App() {
         <InfoTooltip
           isOpen={isInfoTooltip}
           onClose={handleCloseTooltip}
-          message={infoTooltipMessage} />
+          message={infoTooltipMessage}
+          goodMessageTooltip={isGoodInfoTooltip} />
       </div>
     </CurrentUserContext.Provider>
   );
