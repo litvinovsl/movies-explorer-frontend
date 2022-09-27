@@ -9,6 +9,7 @@ function Profile({ logoutProfile, onUpdateUser }) {
         currentUser,
         setСurrentUser,
     } = context;
+    // console.log('name карент: ', currentUser.name, ', email: ', currentUser.email)
     const { register,
         formState: { errors, isValid },
         handleSubmit,
@@ -32,6 +33,10 @@ function Profile({ logoutProfile, onUpdateUser }) {
         // console.log('валид',isValid)
         // console.log('ВСЕ',name === currentUser.name && email === currentUser.email)
         console.log('name: ', watch('name'), ', email: ', watch('email'))
+        console.log('name карент: ', currentUser.name, ', email: ', currentUser.email)
+        console.log('name стейт: ', name, ', email: ', email)
+
+
 
 
         if (name === currentUser.name && email === currentUser.email) {
@@ -47,7 +52,7 @@ function Profile({ logoutProfile, onUpdateUser }) {
 
             setIsChangeProfile(false);
         }
-        }, [isValid, name, email, currentUser.name, currentUser.email]);
+        }, [isValid, name, email, currentUser.name, currentUser.email, currentUser, setСurrentUser]);
 
     useEffect(() => {
         setName(currentUser.name);
