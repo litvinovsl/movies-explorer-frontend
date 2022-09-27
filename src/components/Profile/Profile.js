@@ -11,7 +11,8 @@ function Profile({ logoutProfile, onUpdateUser }) {
     } = context;
     const { register,
         formState: { errors, isValid },
-        handleSubmit
+        handleSubmit,
+        watch,
     } = useForm({
         defaultValues: {
             name: currentUser.name,
@@ -26,15 +27,26 @@ function Profile({ logoutProfile, onUpdateUser }) {
 
 
     useEffect(() => {
-        console.log('имя',name === currentUser.name )
-        console.log('мейл',email === currentUser.email)
-        console.log('валид',isValid)
-        console.log('ВСЕ',name === currentUser.name && email === currentUser.email && isValid)
+        // console.log('имя',name === currentUser.name )
+        // console.log('мейл',email === currentUser.email)
+        // console.log('валид',isValid)
+        // console.log('ВСЕ',name === currentUser.name && email === currentUser.email)
+        console.log('name: ', watch('name'), ', email: ', watch('email'))
 
-        if (name === currentUser.name && email === currentUser.email && isValid) {
+
+        if (name === currentUser.name && email === currentUser.email) {
             setIsChangeProfile(false);
-        } else if (isValid) setIsChangeProfile(true);
-            else setIsChangeProfile(false);
+            console.log('нет изменений')
+
+        } else if (isValid) {
+            setIsChangeProfile(true);
+            console.log('изменено и валидация норм')
+
+        } else if(!isValid) {
+            console.log('изменено но не валид')
+
+            setIsChangeProfile(false);
+        }
         }, [isValid, name, email, currentUser.name, currentUser.email]);
 
     useEffect(() => {
@@ -81,12 +93,13 @@ function Profile({ logoutProfile, onUpdateUser }) {
                                 value: /^[A-Za-zа-яА-ЯёЁ0-9-\s]*$/,
                                 message: 'Можно использовать латиницу, кириллицу, пробел или дефис.'
                             },
-                            onChange: (e) => { handleChangeName(e) }
+                            onChange: (e) => { handleChangeName(e) },
+                            // defaultValue: {name}
                         })}
                         className='profile__input'
                         // name="name"
                         type='text'
-                        value={name || ''}
+                        defaultValue={name || ''}
                     />
                     <p className='profile__errors'>{errors?.name && `${errors?.name?.message || 'Ошибка валидации'}`}</p>
                     <label htmlFor="profile__name" className="form__label form__label_name">Имя</label>
@@ -97,19 +110,20 @@ function Profile({ logoutProfile, onUpdateUser }) {
                                 value: /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/,
                                 message: 'Введите e-mail'
                             },
-                            onChange: (e) => { handleChangeEmail(e) }
+                            onChange: (e) => { handleChangeEmail(e) },
+                            // defaultValue: {email}
                         })}
                         className='profile__input profile__input_last'
                         // name="email"
                         type='text'
-                        value={email || ''}
+                        defaultValue={email || ''}
                     />
                     {/* <p className='profile__errors_email'>l</p> */}
                     <p className='profile__errors profile__errors_email'>{errors?.email && `${errors?.email?.message || 'Ошибка валидации'}`}</p>
                     <label htmlFor="profile__email" className="form__label form__label_email">E-mail</label>
                 </div>
                 <button
-                    className={isValid ? `profile__button profile__button_submit` : 'profile__button profile__button_submit-inctive'}
+                    className={isChangeProfile ? `profile__button profile__button_submit` : 'profile__button profile__button_submit-inctive'}
                     type='submit'
                     disabled={!isChangeProfile}
                 >Редактировать
