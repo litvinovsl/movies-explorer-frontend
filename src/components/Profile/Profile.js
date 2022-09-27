@@ -9,11 +9,10 @@ function Profile({ logoutProfile, onUpdateUser }) {
         currentUser,
         setСurrentUser,
     } = context;
-    // console.log('name карент: ', currentUser.name, ', email: ', currentUser.email)
     const { register,
         formState: { errors, isValid },
         handleSubmit,
-        watch,
+        // watch,
     } = useForm({
         defaultValues: {
             name: currentUser.name,
@@ -21,35 +20,17 @@ function Profile({ logoutProfile, onUpdateUser }) {
         },
         mode: 'onChange',
     });
-    // console.log('name: ', currentUser.name, ' email: ', currentUser.email)
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [isChangeProfile, setIsChangeProfile] = useState(false);
 
 
     useEffect(() => {
-        // console.log('имя',name === currentUser.name )
-        // console.log('мейл',email === currentUser.email)
-        // console.log('валид',isValid)
-        // console.log('ВСЕ',name === currentUser.name && email === currentUser.email)
-        console.log('name: ', watch('name'), ', email: ', watch('email'))
-        console.log('name карент: ', currentUser.name, ', email: ', currentUser.email)
-        console.log('name стейт: ', name, ', email: ', email)
-
-
-
-
         if (name === currentUser.name && email === currentUser.email) {
             setIsChangeProfile(false);
-            console.log('нет изменений')
-
         } else if (isValid) {
             setIsChangeProfile(true);
-            console.log('изменено и валидация норм')
-
         } else if(!isValid) {
-            console.log('изменено но не валид')
-
             setIsChangeProfile(false);
         }
         }, [isValid, name, email, currentUser.name, currentUser.email, currentUser, setСurrentUser]);
@@ -65,16 +46,11 @@ function Profile({ logoutProfile, onUpdateUser }) {
     function handleChangeEmail(e) {
         setEmail(e.target.value);
     }
-
-
-
-
     function handleSubmitCastom() {
         onUpdateUser({
             name: name,
             email: email,
         });
-        // setIsChangeProfile(false)
         setСurrentUser({ name: name, email: email });
     }
 
@@ -99,10 +75,9 @@ function Profile({ logoutProfile, onUpdateUser }) {
                                 message: 'Можно использовать латиницу, кириллицу, пробел или дефис.'
                             },
                             onChange: (e) => { handleChangeName(e) },
-                            // defaultValue: {name}
                         })}
                         className='profile__input'
-                        // name="name"
+                        name="name"
                         type='text'
                         defaultValue={name || ''}
                     />
@@ -116,14 +91,12 @@ function Profile({ logoutProfile, onUpdateUser }) {
                                 message: 'Введите e-mail'
                             },
                             onChange: (e) => { handleChangeEmail(e) },
-                            // defaultValue: {email}
                         })}
                         className='profile__input profile__input_last'
-                        // name="email"
+                        name="email"
                         type='text'
                         defaultValue={email || ''}
                     />
-                    {/* <p className='profile__errors_email'>l</p> */}
                     <p className='profile__errors profile__errors_email'>{errors?.email && `${errors?.email?.message || 'Ошибка валидации'}`}</p>
                     <label htmlFor="profile__email" className="form__label form__label_email">E-mail</label>
                 </div>

@@ -72,7 +72,7 @@ function App() {
         setСurrentUser(data.data);
       })
       .catch((err) => {
-        // console.log(err);
+        console.log(err);
       });
   }, [loggedIn]);
 
@@ -133,6 +133,7 @@ function App() {
       validToken(token)
         .then((res) => {
           setLoggedIn(true);
+          setСurrentUser(res.data);
           history.push(location.pathname);
         })
         .then(() => {
