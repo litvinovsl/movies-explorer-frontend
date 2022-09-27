@@ -147,7 +147,10 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
+          logoutProfile();
         });
+    } else {
+      logoutProfile();
     }
   }
 
