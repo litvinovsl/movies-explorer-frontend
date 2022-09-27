@@ -7,7 +7,7 @@ import Movies from "../Movies/Movies";
 import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import InfoTooltip from "../InfoTooltip/InfoTooltip";
-import { Route, Switch, useHistory, useLocation } from "react-router-dom";
+import { Route, Redirect, Switch, useHistory, useLocation } from "react-router-dom";
 import api from "../../utils/MainApi";
 import NotFound from "../NotFound/NotFound";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
@@ -229,12 +229,18 @@ function App() {
       <div>
         <Switch>
           <Route path="/signup">
-            <Register
-              onRegister={onRegister} />
+            {loggedIn ?
+              <Redirect to="/" /> : (
+                <Register
+                  onRegister={onRegister} />
+              )}
           </Route>
           <Route path="/signin">
-            <Login
-              onLogin={onLogin} />
+            {loggedIn ?
+              <Redirect to="/" /> : (
+                <Login
+                  onLogin={onLogin} />
+              )}
           </Route>
           <Route exact path="/">
             <Header class='header_main' loggedIn={loggedIn} />
