@@ -69,6 +69,8 @@ function App() {
     api
       .getUserInfo(token)
       .then((data) => {
+        
+        console.log(data.data);
         setСurrentUser(data.data);
       })
       .catch((err) => {
@@ -168,6 +170,8 @@ function App() {
     history.push('/');
     setLoggedIn(false);
   }
+
+
   function handleUpdateUser({ name, email }) {
     api
       .updateUserInfo({ name, email })

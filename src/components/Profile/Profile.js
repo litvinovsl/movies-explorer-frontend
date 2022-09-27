@@ -12,7 +12,7 @@ function Profile({ logoutProfile, onUpdateUser }) {
     const { register,
         formState: { errors, isValid },
         handleSubmit,
-        // watch,
+        watch,
     } = useForm({
         defaultValues: {
             name: currentUser.name,
@@ -20,12 +20,15 @@ function Profile({ logoutProfile, onUpdateUser }) {
         },
         mode: 'onChange',
     });
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
+    const [name, setName] = useState(currentUser.name);
+    const [email, setEmail] = useState(currentUser.email);
     const [isChangeProfile, setIsChangeProfile] = useState(false);
 
 
     useEffect(() => {
+        // console.log(name, ' __ ', email)
+        // console.log(watch('name'), ' _watch_ ', watch('email'));
+
         if (name === currentUser.name && email === currentUser.email) {
             setIsChangeProfile(false);
         } else if (isValid) {
