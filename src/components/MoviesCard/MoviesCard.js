@@ -16,6 +16,8 @@ function MoviesCard({ movie }) {
         isDelLikedMovie
     } = context;
 
+
+
     function click() {
         //меняем длительность обратно на number
         const savedMovie = movies.find((item) => {
@@ -46,6 +48,10 @@ function MoviesCard({ movie }) {
         }
 
     }
+
+    function clickOnCard() {
+        window.location.assign(movie.trailerLink);
+    }
     const movieSaveButtonClassName = `${!movie.isLiked ? "element__button" : "element__button element__save_active"
         }`;
     return (
@@ -58,6 +64,7 @@ function MoviesCard({ movie }) {
                 <button className="element__button element__delete_active" onClick={click}></button>
             </Route>
             <img
+                onClick={clickOnCard}
                 className="element__image"
                 src={movie.image}
                 alt={movie.nameRU}
