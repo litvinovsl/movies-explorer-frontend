@@ -28,6 +28,9 @@
     border-radius: 4px;
     margin-left: 17px;
 }
+.profile-button__icon-border_header{
+    background-color: #042035;
+}
 
 .profile-button__icon{
     width: 11.5px;

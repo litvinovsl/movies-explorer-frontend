@@ -87,7 +87,7 @@
     animation: preloader-inside-red 1s ease-in-out infinite;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 1000px) {
     .preloader{
         padding: 0;
     }
